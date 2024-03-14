@@ -1,46 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Cloud Clicker</title>
-</head>
-
-<body>
-    <!-- le script qui contient la logique -->
-    <script src="index.js" async></script>
+  </head>
+  <body>
+    <script src="index.js"></script>
     <header>
-        <!-- logo du jeu -->
-        <img src="assets/logo-template.png" alt="">
-        <!-- liste des paliers -->
-        <ul>
-            <li><span>Palier 1</span></li>
-            <li><span>Palier 2</span></li>
-            <li><span>Palier 3</span></li>
-            <li><span>Palier 4</span></li>
-        </ul>
+      <img
+        src="https://github.com/elhayanich/cloud-clicker/blob/main/assets/logo-draft.png?raw=true"
+      />
+      <ul>
+        <li><span>Palier 1</span></li>
+        <li><span>Palier 2</span></li>
+        <li><span>Palier 3</span></li>
+        <li><span>Palier 4</span></li>
+      </ul>
     </header>
     <main>
-        <!-- liste des bonus -->
-        <ul>
-            <li><button>🌒</button></li>
-            <li><button>🌓</button></li>
-            <li><button>🌕</button></li>
-        </ul>
-        <!-- conteneur nuage + gouttes d'eau -->
-        <div class="cloud">
-            <img src="cloud-template.png" alt="" id="cloud">
-            <img src="raindrop-template.png" alt="" class="raindrop">
-        </div>
-        <!-- arrière-plan -->
-        <img src="assets/background-1.png" alt="" id="background-img">
+      <ul class="bonus">
+        <li>
+          <img
+            src="https://github.com/elhayanich/cloud-clicker/blob/main/assets/bonusss1.png?raw=true"
+            alt="bonus1"
+          />
+        </li>
+        <li>
+          <img
+            src="https://github.com/elhayanich/cloud-clicker/blob/main/assets/bonusss2.png?raw=true"
+            alt="bonus2"
+          />
+        </li>
+        <li>
+          <img
+            src="https://github.com/elhayanich/cloud-clicker/blob/main/assets/bonusss3.png?raw=true"
+            alt="bonus3"
+          />
+        </li>
+      </ul>
+      <ul>
+        <li class="cloud">
+          <img
+            src="https://github.com/elhayanich/cloud-clicker/blob/main/assets/clicker.png?raw=true"
+            alt="clicker"
+          />
+        </li>
+      </ul>
+      <!-- <div class="backgroundimg">
+        <img
+          src="https://github.com/elhayanich/cloud-clicker/blob/main/assets/old/background-1-desktop.jpg?raw=true"
+        />
+      </div> -->
+      <ul class="raindrop">
+        <li>
+          <img
+            src="https://github.com/elhayanich/cloud-clicker/blob/main/assets/raindrop.png?raw=true"
+            alt="raindrop"
+          />
+        </li>
+      </ul>
     </main>
-    <!-- crédits / etc -->
     <footer>
-        <p>Made with ❤️ by <a href="#">C.E.H.</a> <a href="#">A.D.</a> <a href="#">A.L.</a></p>
+      <p>
+        Made with ❤️ by <a href="#">C.E.H.</a> <a href="#">A.D.</a>
+        <a href="#">A.L.</a>
+      </p>
     </footer>
-</body>
-
+  </body>
 </html>
