@@ -12,6 +12,7 @@ const stepThree = 2500;
 const stepFour = 10000;
 //? noeuds HTML
 const backgroundImage = document.querySelector("#background-img");
+console.log(`backgroundImage => ${backgroundImage}`);
 const scoreDisplay = document.querySelector(".score-display");
 // scoreDisplay.innerHTML = score;
 const cloud = document.querySelector("#cloud");
