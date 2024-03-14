@@ -4,54 +4,99 @@
     /* variables pour les couleurs */
     --white: #eeeeee;
     --black: #3d3d3d;
-    --pink: #ffd5f2;
+    --pink: #FFF5FC;
 }
-/* réinitialisation du style de base */
+
 * {
-    box-sizing: border-box;
+    margin: 0;
 }
-body {
+
+/* body {
     margin: 0;
     background-color: var(--white);
     color: var(--black);
-}
-/* en-tête */
+    min-height: 100vh;
+    display: grid;
+} */
+
+/* HEADER  */ 
+
 header {
     background-color: var(--pink);
+    color: #3d3d3d;
 }
-/* image de l'entête */
+
 header > img {
-    width: 70%; /* à changer losrque l'image "finale" sera choisie */
+    width: 50%; 
     height: auto;
     display: block;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 }
-/* style commun aux listes paliers + bonus */
-ul {
+
+
+/* ul {
     list-style-type: none;
     display: flex;
     flex-direction: row;
     padding: 0;
     justify-content: center;
     gap: 1em;
-}
-/* style propre à la liste des paliers */
+} */
+
 header > ul {
+    list-style: none;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     text-align: center;
-    padding: 1em;
+    padding: 0.5em;
+    gap : 1em;
 }
-/* bonus */
-button {
-    border: transparent;
+header > ul > li{
+    border : 2px solid black;
+border-radius: 40px;
 }
-/* outline rouge pour visualisation des paliers/bonus lorsqu'on travaille sur le placement -> à supprimer/commenter après */
-li {
-    border: 2px solid red;
+
+/* MAIN */
+
+main{
+    background-color: var(--white);
+    color: white;
+    background-image: url(https://github.com/elhayanich/cloud-clicker/blob/main/assets/old/background-1-desktop.jpg?raw=true);
+    background-repeat: no-repeat;
+  background-size: cover;
 }
-/* pied de page */
+main > ul {
+    list-style: none;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    padding-left: 0%;
+    padding-bottom: 4rem;
+}
+
+.bonus img {
+    width: 110px;
+}
+
+
+.cloud{
+    list-style: none;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+}
+
+.cloud img {
+    width: 220px;
+}
+
+.raindrop img {
+    width: 20px;
+}
+
 footer {
     background-color: var(--pink);
     text-align: center;
+    height: 2rem;
 }
