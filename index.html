@@ -9,9 +9,12 @@
 </head>
 
 <body>
-    <script src="index.js"></script>
+    <!-- le script qui contient la logique -->
+    <script src="index.js" async></script>
     <header>
-        <img src="assets/logo-template.png">
+        <!-- logo du jeu -->
+        <img src="assets/logo-template.png" alt="">
+        <!-- liste des paliers -->
         <ul>
             <li><span>Palier 1</span></li>
             <li><span>Palier 2</span></li>
@@ -20,17 +23,21 @@
         </ul>
     </header>
     <main>
+        <!-- liste des bonus -->
         <ul>
             <li><button>🌒</button></li>
             <li><button>🌓</button></li>
             <li><button>🌕</button></li>
         </ul>
+        <!-- conteneur nuage + gouttes d'eau -->
         <div class="cloud">
-            <img src="cloud-template.png">
-            <img src="raindrop-template.png">
+            <img src="cloud-template.png" alt="" id="cloud">
+            <img src="raindrop-template.png" alt="" class="raindrop">
         </div>
-        <img src="assets/background-template.png">
+        <!-- arrière-plan -->
+        <img src="assets/background-1.png" alt="" id="background-img">
     </main>
+    <!-- crédits / etc -->
     <footer>
         <p>Made with ❤️ by <a href="#">C.E.H.</a> <a href="#">A.D.</a> <a href="#">A.L.</a></p>
     </footer>
