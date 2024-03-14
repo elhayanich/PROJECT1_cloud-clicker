@@ -8,23 +8,27 @@
 }
 
 * {
-    box-sizing: border-box;
+    margin: 0;
 }
 
 body {
     margin: 0;
-    background-color: var(--white);
+    /* background-color: var(--white);
     color: var(--black);
     font-weight: bold;
 
 }
 
+/* HEADER */
+
 header {
     background-color: var(--pink);
+    color: var(--black);
 }
 
 header > img {
     width: 40%; /* à changer losrque l'image "finale" sera choisie */
+    width: 50%;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -33,15 +37,12 @@ header > img {
 
 ul {
     list-style-type: none;
-    display: flex;
-    flex-direction: row;
     padding: 0;
-    justify-content: center;
     gap: 1em;
     
 
 }
-
+/* Palier */
 header > ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -64,8 +65,42 @@ main li {
     font-family: "Inter";
     font-size: smaller;
 
+    padding: 0.5em;
+}
+header > ul > li {
+    border: 2px solid black;
+    border-radius: 40px;
 }
 
+/* MAIN */
+
+main {
+    background-color: var(--white);
+    background-image: url(assets/background-1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+main > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 4rem;
+}
+
+/* bonus */
+.bonus img {
+    width: 6.5em;
+}
+
+/* nuage */
+.cloud img {
+    width: 220px;
+}
+.raindrop img {
+    width: 20px;
+}
+
+/* footer */
 footer {
     background-color: var(--pink);
     margin: 0 auto;
@@ -73,4 +108,9 @@ footer {
     text-align: center;
     font-family: "Inter";
     font-size: smaller;
+    height: 2rem;
+}
+footer a {
+    text-decoration: none;
+}
 }
