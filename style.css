@@ -1,10 +1,10 @@
-/* Import de police ici */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 :root {
     /* variables pour les couleurs */
-    --white: #eeeeee;
+    --white: #FCF9F9;
     --black: #3d3d3d;
-    --pink: #ffd5f2;
+    --pink: #FFF5FC;
 }
 
 * {
@@ -15,6 +15,8 @@ body {
     margin: 0;
     background-color: var(--white);
     color: var(--black);
+    font-weight: bold;
+
 }
 
 header {
@@ -22,10 +24,11 @@ header {
 }
 
 header > img {
-    width: 70%; /* à changer losrque l'image "finale" sera choisie */
+    width: 40%; /* à changer losrque l'image "finale" sera choisie */
     height: auto;
     display: block;
     margin: 0 auto;
+    padding: 1.5rem 0 1rem 0;
 }
 
 ul {
@@ -35,6 +38,8 @@ ul {
     padding: 0;
     justify-content: center;
     gap: 1em;
+    
+
 }
 
 header > ul {
@@ -42,18 +47,30 @@ header > ul {
     grid-template-columns: repeat(2, 1fr);
     text-align: center;
     padding: 1em;
+    
 }
 
 button {
     border: transparent;
+    border-radius: 90%;
 }
 
-li {
+main li {
     /* outline rouge pour visualisation */
-    border: 2px solid red;
+    border: 2px solid grey;
+    box-shadow: 0 2px 2px 0 grey ;
+    border-radius: 90%;
+    background-color: var(--white);
+    font-family: "Inter";
+    font-size: smaller;
+
 }
 
 footer {
     background-color: var(--pink);
+    margin: 0 auto;
+    padding: 10px;
     text-align: center;
+    font-family: "Inter";
+    font-size: smaller;
 }
