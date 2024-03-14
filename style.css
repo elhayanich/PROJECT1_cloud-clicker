@@ -6,28 +6,27 @@
     --black: #3d3d3d;
     --pink: #ffd5f2;
 }
-
+/* réinitialisation du style de base */
 * {
     box-sizing: border-box;
 }
-
 body {
     margin: 0;
     background-color: var(--white);
     color: var(--black);
 }
-
+/* en-tête */
 header {
     background-color: var(--pink);
 }
-
+/* image de l'entête */
 header > img {
     width: 70%; /* à changer losrque l'image "finale" sera choisie */
     height: auto;
     display: block;
     margin: 0 auto;
 }
-
+/* style commun aux listes paliers + bonus */
 ul {
     list-style-type: none;
     display: flex;
@@ -36,23 +35,22 @@ ul {
     justify-content: center;
     gap: 1em;
 }
-
+/* style propre à la liste des paliers */
 header > ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     text-align: center;
     padding: 1em;
 }
-
+/* bonus */
 button {
     border: transparent;
 }
-
+/* outline rouge pour visualisation des paliers/bonus lorsqu'on travaille sur le placement -> à supprimer/commenter après */
 li {
-    /* outline rouge pour visualisation */
     border: 2px solid red;
 }
-
+/* pied de page */
 footer {
     background-color: var(--pink);
     text-align: center;
