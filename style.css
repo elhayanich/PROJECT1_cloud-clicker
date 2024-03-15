@@ -17,7 +17,7 @@
 body {
     margin: 0;
     background-color: var(--pink);
-    color: var(--black);
+    color: black;
     font-family: "Inter";
     font-weight: bold;
 }
@@ -26,7 +26,7 @@ body {
 
 header {
     background-color: var(--pink);
-    color: var(--black);
+    color: black;
 }
 
 header > img {
@@ -54,7 +54,7 @@ header > ul > li {
     border-radius: 2.5rem;
     width: fit-content;
     padding: 0.25rem;
-    background-color: var(--green);
+    background-color: var(--white);
 }
 
 /* button {
@@ -114,7 +114,7 @@ main > ul {
 }
 /* score */
 .score-display {
-    background-color: var(--green);
+    background-color: var(--white);
     border: 0.125rem outset black;
     border-radius: 1em;
     padding: 0.25rem;
