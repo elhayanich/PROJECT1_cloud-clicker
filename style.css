@@ -4,9 +4,10 @@
 }
 :root {
     /* variables pour les couleurs */
-    --white: #fcf9f9;
+    --white: #eeeeee; /* #eeeeee ou #fcf9f9 */
     --black: #3d3d3d;
-    --pink: #fff5fc;
+    --pink: #ffe2f6;
+    --green: #e2ffeb;
 }
 
 * {
@@ -15,7 +16,7 @@
 
 body {
     margin: 0;
-    background-color: var(--white);
+    background-color: var(--pink);
     color: var(--black);
     font-family: "Inter";
     font-weight: bold;
@@ -49,10 +50,11 @@ header > ul {
     padding: 1em;
 }
 header > ul > li {
-    border: 2px solid var(--black);
+    border: 0.125rem inset black;
     border-radius: 2.5rem;
     width: fit-content;
     padding: 0.25rem;
+    background-color: var(--green);
 }
 
 /* button {
@@ -74,7 +76,10 @@ main {
     background-image: url(assets/background-1.png);
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 60vh;
+    /* min-height: 68vh; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
 }
 main > ul {
     display: flex;
@@ -87,7 +92,12 @@ main > ul {
 .bonus img {
     width: 6.5em;
 }
-
+/* style commun au nuage/goutte */
+.clicker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 /* nuage */
 .cloud img {
     width: 14rem;
@@ -95,15 +105,24 @@ main > ul {
 .raindrop img {
     width: 1.25rem;
 }
-
+/* score */
+.score-display {
+    background-color: var(--green);
+    border: 0.125rem outset black;
+    border-radius: 1em;
+    padding: 0.25rem;
+    width: fit-content;
+    justify-self: center;
+    max-height: 1.25rem;
+    align-self: center;
+}
 /* footer */
 footer {
     background-color: var(--pink);
-    margin: 0 auto;
+    margin: 0.25rem auto;
     padding: 10px;
     text-align: center;
     font-size: smaller;
-    height: 2rem;
 }
 footer a {
     text-decoration: none;
