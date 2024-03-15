@@ -4,10 +4,10 @@
 }
 :root {
     /* variables pour les couleurs */
-    --white: #eeeeee; /* #eeeeee ou #fcf9f9 */
+    --white: #fcf9f9; /* #eeeeee ou #fcf9f9 */
     --black: #3d3d3d;
-    --pink: #ffe2f6;
-    --green: #e2ffeb;
+    --pink: #fff5fc;
+    --green: #51a733;
 }
 
 * {
