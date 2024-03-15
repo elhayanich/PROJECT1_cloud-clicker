@@ -92,6 +92,13 @@ main > ul {
 .bonus img {
     width: 6.5em;
 }
+.bonus button {
+    margin-top: 1rem;
+    border: transparent;
+    width: fit-content;
+    border-radius: 100%;
+    background-color: transparent;
+}
 /* style commun au nuage/goutte */
 .clicker {
     display: flex;
