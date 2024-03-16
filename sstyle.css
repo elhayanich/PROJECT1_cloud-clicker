@@ -1,0 +1,168 @@
+
+
+
+@font-face {
+    font-family: "Inter";
+    src: url("assets/fonts/Inter-VariableFont_slnt\,wght.ttf");
+}
+
+
+body,
+html {
+   margin: 0;
+   padding: 0;
+   height: 100%;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color:#ffe8ee;
+    color: #3d3d3d;
+    height: 10%;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.logo img {
+    width: 6rem;
+    margin: auto;
+    padding-top: 0.8rem;
+}
+
+.name {
+    padding: .7em .7em;
+   margin: auto;
+    border-radius: 15px;
+    font-size: 1em;
+    height: 50%;
+    display:flex;
+    align-items: center;
+    background-color:white;
+    color: #3d3d3d;
+    border: 1px solid black;
+}
+
+
+
+
+
+
+
+
+
+
+.menu{
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
+  }
+  
+  .burger-menu {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .burger-menu span {
+    display: block;
+    width: 2.5rem;
+    height: 0.2rem;
+    background: #333;
+    margin: 5px 0;
+  }
+  
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    width: 90%;
+    padding-top: 1rem ;
+    padding-bottom: 1rem;
+    align-self: center;
+}
+
+.grid-item {
+    background-color: white;
+    color: #3d3d3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.grid-item img {
+    width: 13px;
+}
+
+main {
+    background-image: url('assets/background-1.png'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 0;
+}
+
+.main-button {
+    background-color: transparent;
+    border: none;
+}
+
+.main-button img{
+    width: 8rem;
+} 
+
+.clicker {
+    margin-top: 2rem; 
+    background-color: transparent;
+    border: none;
+    width: 10rem;
+}
+
+
+.score {
+    color: #3d3d3d;
+    background-color: #ffe8ee;
+    line-height: 2em;
+    text-align: center;
+    border: 1px solid white;
+    width: 30%;
+    border-radius: 15px;
+    display: block;
+    position: absolute;
+    bottom: calc(10% + 30px);
+}
+
+
+footer {
+    background-color: #ffe8ee;
+    color: #3d3d3d;
+    font-size: 0.7em;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
