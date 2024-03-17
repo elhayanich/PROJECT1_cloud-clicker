@@ -2,12 +2,18 @@
 // à voir si on s'en sort avec une seul variable pour le score quand les fonctions seront faites
 let score = 0;
 let scoreMultiplier = 1;
-let enteredName = "undefined";
-//? les bonus à définir (une fois que les fonctions qui les concernent ont été posées)
-/* const bonusOne = null;
-const bonusTwo = null;
-const bonusThree = null; */
-//? les paliers à définir
+let enteredName = "Anonymous";
+//? les bonus (à définir)
+const bonusOne = document.querySelector("#bonus-1");
+let isBonusOneActive = false;
+let bonusOneNumber = 0;
+const bonusTwo = document.querySelector("#bonus-2");
+let isBonusTwoActive = false;
+let bonusTwoNumber = 0;
+const bonusThree = document.querySelector("#bonus-3");
+let isBonusThreeActive = false;
+let bonusThreeNumber = 0;
+//? les paliers (à définir)
 const stepOne = 100;
 const stepTwo = 750;
 const stepThree = 2500;
@@ -22,6 +28,7 @@ const burgerMenu = document.querySelector(".burger-menu");
 const menuList = document.querySelector(".menu-list");
 
 //* Fonctions, événements & affectations
+// fonction qui va s'occuper de changer l'arrière-plan
 function checkStep() {
     if (score >= stepTwo && score < stepThree) {
         backgroundImage.style.backgroundImage =
@@ -39,11 +46,26 @@ function checkStep() {
         scoreMultiplier = 8;
     }
 }
+// le nom du joueur une fois entré sera stocké ici
 playerName.innerHTML = enteredName;
-cloud.addEventListener("click", () => {
-    score = score + 1 * scoreMultiplier;
+// fonction qui gère l'augmentation du score
+function augmentScore(a) {
+    score = score + a * scoreMultiplier;
     scoreDisplay.innerHTML = score;
+}
+// événement qui augmente le score à chaque fois qu'on clicke sur le nuage
+cloud.addEventListener("click", () => {
+    augmentScore(1);
 });
+// fonctions pour les bonus
+bonusOne.addEventListener("click", () => {
+    bonusOneNumber++;
+    if (!isBonusOneActive) {
+        isBonusOneActive = true;
+        setInterval(augmentScore(2) * bonusOneNumber, 1500);
+    }
+});
+// fonction qui gère le menu burger
 burgerMenu.addEventListener("click", function () {
     menuList.classList.toggle("active");
 });
