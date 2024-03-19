@@ -3,103 +3,152 @@
 let score = 0;
 let scoreMultiplier = 1;
 //? les bonus (à définir)
-const bonusOne = document.querySelector("#bonus-1");
-let isBonusOneActive = false;
-let isBonusOneUnlocked = false;
-let bonusOneCost = 100;
-let bonusOneNumber = 0;
-const bonusTwo = document.querySelector("#bonus-2");
-let isBonusTwoActive = false;
-let isBonusTwoUnlocked = false;
-let bonusTwoCost = 750;
-let bonusTwoNumber = 0;
-const bonusThree = document.querySelector("#bonus-3");
-let isBonusThreeActive = false;
-let isBonusThreeUnlocked = false;
-let bonusThreeCost = 2500;
-let bonusThreeNumber = 0;
+const bonus1 = {
+  element: document.querySelector("#bonus-1"),
+  isActive: false,
+  isUnlocked: false,
+  cost: 100,
+  amount: 0,
+};
+const bonus2 = {
+  element: document.querySelector("#bonus-2"),
+  isActive: false,
+  isUnlocked: false,
+  cost: 750,
+  amount: 0,
+};
+const bonus3 = {
+  element: document.querySelector("#bonus-3"),
+  isActive: false,
+  isUnlocked: false,
+  cost: 2500,
+  amount: 0,
+};
 //? les paliers (à définir)
-const stepOne = 100;
-const stepTwo = 750;
-const stepThree = 2500;
-const stepFour = 10000;
-// noeuds HTML
-const backgroundImage = document.querySelector("main");
-const scoreDisplay = document.querySelector("#score-display");
-const cloud = document.querySelector("#clicker");
-// const raindrop = document.querySelector(".raindrop"):
-const burgerMenu = document.querySelector(".burger-menu");
-const menuList = document.querySelector(".menu-list");
+const steps = {
+  step1: 100,
+  step2: 750,
+  step3: 2500,
+  step4: 10000,
+};
+//? noeuds HTML
+//! --Body
+const body = {
+  backgroundImage: document.querySelector("main"),
+  scoreDisplay: document.querySelector("#score-display"),
+  cloud: document.querySelector("#clicker"),
+};
+//! --Header
+const header = {
+  userName: document.querySelector(".name"),
+  overlay: document.querySelector(".overlay"),
+  popup: document.querySelector(".popup"),
+  popupInput: document.querySelector(".popup-input"),
+  popupSubmit: document.querySelector(".popup-submit"),
+  burgerMenu: document.querySelector(".burger-menu"),
+  menuList: document.querySelector(".menu-list"),
+};
 
 //* Fonctions, événements & affectations
-// fonction qui va s'occuper de changer l'arrière-plan
+//? fonction qui va s'occuper de changer l'arrière-plan
 function checkStep() {
-  if (score >= stepTwo && score < stepThree) {
-    backgroundImage.style.backgroundImage = "url(./assets/background-2.png)";
+  if (score >= steps.step2 && score < steps.step3) {
+    body.backgroundImage.style.backgroundImage =
+      "url(./assets/background-2.png)";
     scoreMultiplier = 2;
-    isBonusOneUnlocked = true;
+    bonus1.isUnlocked = true;
   }
-  if (score >= stepThree && score < stepFour) {
-    backgroundImage.style.backgroundImage = "url(./assets/background-3.png)";
+  if (score >= steps.step3 && score < steps.step4) {
+    body.backgroundImage.style.backgroundImage =
+      "url(./assets/background-3.png)";
     scoreMultiplier = 4;
-    isBonusTwoUnlocked = true;
+    bonus2.isUnlocked = true;
   }
-  if (score >= stepFour) {
-    backgroundImage.style.backgroundImage = "url(./assets/background-4.png)";
+  if (score >= steps.step4) {
+    body.backgroundImage.style.backgroundImage =
+      "url(./assets/background-4.png)";
     scoreMultiplier = 8;
-    isBonusThreeUnlocked = true;
+    bonus3.isUnlocked = true;
   }
 }
+// fonction qui change l'affichage du score
 function updateScore() {
-  scoreDisplay.innerHTML = score;
+  body.scoreDisplay.innerHTML = score;
   checkStep();
 }
-// le nom du joueur une fois entré sera stocké ici
-// playerName.innerHTML = enteredName;
 
-//Header : Your name 
-const name = document.querySelector(".name");
-const overlay = document.querySelector(".overlay");
-const popup = document.querySelector(".popup");
-const popupInput = document.querySelector(".popup-input");
-const popupSubmit = document.querySelector(".popup-submit");
+// fonction qui gère l'augmentation du score
+function augmentScore(a = 1) {
+  score = score + a * scoreMultiplier;
+  updateScore();
+}
+function b1AugmentScore() {
+  augmentScore(bonus1.amount);
+}
+function b2AugmentScore() {
+  augmentScore(bonus2.amount);
+}
+function b3AugmentScore() {
+  augmentScore(bonus3.amount);
+}
+// événement qui augmente le score à chaque fois qu'on clicke sur le nuage
+body.cloud.addEventListener("click", () => {
+  augmentScore(1);
+  // ajouter une animation (CSS?) quand on clicke sur le nuage
+});
+//? fonctions pour les bonus
+function activeBonusIncrement(bool, func) {
+  if (bool != true) {
+    setInterval(func, 1500);
+  }
+}
+// bonus#1
+bonus1.element.addEventListener("click", () => {
+  if (score >= bonus1.cost) {
+    score -= bonus1.cost;
+    updateScore();
+    bonus1.amount++;
+    activeBonusIncrement(bonus1.isActive, b1AugmentScore);
+    bonus1.isActive = true;
+  }
+});
+// bonus#2
+bonus2.element.addEventListener("click", () => {
+  if (score >= bonus2.cost) {
+    score -= bonus2.cost;
+    updateScore();
+    bonus2.amount++;
+    activeBonusIncrement(bonus2.isActive, b2AugmentScore);
+    bonus2.isActive = true;
+  }
+});
+// bonus#3
+bonus3.element.addEventListener("click", () => {
+  if (score >= bonus3.cost) {
+    score -= bonus3.cost;
+    updateScore();
+    bonus3.amount++;
+    activeBonusIncrement(bonus3.isActive, b3AugmentScore);
+    bonus3.isActive = true;
+  }
+});
 
-// Pour afficher notre popup : 
-name.addEventListener("click", () => {
-    overlay.classList.toggle("hidden");
-    popup.classList.toggle("hidden");
-  });
-
-//Pour masquer notre popup: 
-overlay.addEventListener("click", () => {
-    overlay.classList.toggle("hidden");
-    popup.classList.toggle("hidden");
-  });
-
-//Entrer le nom du joueur ( en cliquant sur entrer) : ( testée : ça fonctionne) 
-popupInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      const errors = [];
-      if (popupInput.value === "" || popupInput.value == null) {
-        errors.push(`Name is required`);
-      }
-      if (errors.length > 0) {
-        e.preventDefault();
-        alert(errors.join(","));
-        return;
-      } else {
-        name.innerHTML = `${popupInput.value}`;
-        overlay.classList.toggle("hidden");
-        popup.classList.toggle("hidden");
-      }
-    }
-  });
-
-//Entrer le nom du joueur ( en cliquant sur la souris): 
-
-popupSubmit.addEventListener("click", (e) => {
+//? Gestion du popup
+// Pour afficher notre popup :
+header.userName.addEventListener("click", () => {
+  header.overlay.classList.toggle("hidden");
+  header.popup.classList.toggle("hidden");
+});
+//Pour masquer notre popup:
+header.overlay.addEventListener("click", () => {
+  header.overlay.classList.toggle("hidden");
+  header.popup.classList.toggle("hidden");
+});
+//Entrer le nom du joueur ( en cliquant sur entrer) : ( testée : ça fonctionne)
+header.popupInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
     const errors = [];
-    if (popupInput.value === "" || popupInput.value == null) {
+    if (header.popupInput.value === "" || header.popupInput.value == null) {
       errors.push(`Name is required`);
     }
     if (errors.length > 0) {
@@ -107,103 +156,35 @@ popupSubmit.addEventListener("click", (e) => {
       alert(errors.join(","));
       return;
     } else {
-      name.innerHTML = `${popupInput.value}`;
-      overlay.classList.toggle("hidden");
-      popup.classList.toggle("hidden");
-    }
-  });
-
-
-
-
-
-// Raindrops si on clique sur le cloud
-// const cloud = document.querySelector("#clicker"); ( Je la commente car elle est déja declarée)
-cloud.addEventListener("click", () => {
-    createRaindrops(cloud);
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fonction qui gère l'augmentation du score
-function augmentScore(a = bonusOneNumber) {
-  score = score + a * scoreMultiplier;
-  updateScore();
-}
-// événement qui augmente le score à chaque fois qu'on clicke sur le nuage
-cloud.addEventListener("click", () => {
-  augmentScore(1);
-  // ajouter une animation (CSS?) quand on clicke sur le nuage
-});
-// fonctions pour les bonus
-bonusOne.addEventListener("click", () => {
-  if (score >= bonusOneCost) {
-    score -= bonusOneCost;
-    updateScore();
-    bonusOneNumber++;
-    if (!isBonusOneActive) {
-      isBonusOneActive = true;
-      setInterval(augmentScore, 1500);
+      header.userName.innerHTML = `${header.popupInput.value}`;
+      header.overlay.classList.toggle("hidden");
+      header.popup.classList.toggle("hidden");
     }
   }
 });
+//Entrer le nom du joueur ( en cliquant sur la souris):
+header.popupSubmit.addEventListener("click", (e) => {
+  const errors = [];
+  if (header.popupInput.value === "" || header.popupInput.value == null) {
+    errors.push(`Name is required`);
+  }
+  if (errors.length > 0) {
+    e.preventDefault();
+    alert(errors.join(","));
+    return;
+  } else {
+    header.userName.innerHTML = `${header.popupInput.value}`;
+    header.overlay.classList.toggle("hidden");
+    header.popup.classList.toggle("hidden");
+  }
+});
+
+// Raindrops si on clique sur le cloud
+body.cloud.addEventListener("click", () => {
+  createRaindrops(body.cloud);
+});
+
 // fonction qui gère le menu burger
-burgerMenu.addEventListener("click", function () {
-  menuList.classList.toggle("active");
+header.burgerMenu.addEventListener("click", function () {
+  header.menuList.classList.toggle("active");
 });
