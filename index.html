@@ -1,90 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Cloud Clicker</title>
-  </head>
 
-  <body>
-    <script src="index.js" async></script>
-    <div class="container">
-      <header>
-        <div class="logo">
-          <img src="assets/logo-draft.png" alt="logo nuage de Cloud clicker" />
-        </div>
-        <button class="name">Your name</button>
-        <!-- Ajouter dans le menu 3 liens : About, home, instructions -->
-        <nav class="menu">
-          <button class="burger-menu">
-            <nav>
-              <span></span>
-              <span></span>
-              <span></span>
-            </nav>
-          </button>
-        </nav>
-      </header>
-      <div class="grid">
-        <div class="grid-item">
-          15 clicks = 100 <img src="assets/goutte.webp" alt="raindrop" />
-        </div>
-        <div class="grid-item">
-          100 clicks = 1k <img src="assets/goutte.webp" alt="raindrop" />
-        </div>
-        <div class="grid-item">
-          1k clicks = 10k <img src="assets/goutte.webp" alt="raindrop" />
-        </div>
-        <div class="grid-item">
-          1.5k clicks = 100k<img src="assets/goutte.webp" alt="raindrop" />
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <title>Cloud Clicker</title>
+</head>
+
+<body>
+  <script src="index.js" async></script>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="assets/logo-draft.png" alt="logo nuage de Cloud clicker" />
       </div>
-      <main>
-        <ul>
-          <li>
-            <button class="main-button" id="bonus-1">
-              <img src="assets/bonus1-draft.png" alt="first bonus" />
-            </button>
-          </li>
-          <li>
-            <button class="main-button" id="bonus-2">
-              <img src="assets/bonus2-draft.png" alt="second bonus" />
-            </button>
-          </li>
-          <li>
-            <button class="main-button" id="bonus-3">
-              <img src="assets/bonus3-draft.png" alt="third bonus" />
-            </button>
-          </li>
-        </ul>
-        <button id="cloud">
-          <img
-            id="clicker"
-            class="clicker"
-            src="assets/clicker.png"
-            alt="clicker button"
-          />
+      <button class="name">Your name</button>
+      <!-- Ajouter dans le menu 3 liens : About, home, instructions -->
+      <nav class="menu">
+        <button class="burger-menu">
+          <nav>
+            <span></span>
+            <span></span>
+            <span></span>
+          </nav>
         </button>
-        <div class="score">Raindrops: <span id="score-display">0</span></div>
-      </main>
-      <div class="popup hidden">
-        <label class="popup-title">Enter your name : </label>
-        <input
-          class="popup-input"
-          type="text"
-          placeholder="Your name"
-          required
-        />
-        <button class="popup-submit" type="submit">Continue</button>
+      </nav>
+    </header>
+    <div class="grid">
+      <div class="grid-item">
+        15 clicks = 100 <img src="assets/goutte.webp" alt="raindrop" />
       </div>
-      <div class="overlay hidden"></div>
-      <footer>
-        <p>
-          Made with ❤️ by <a href="#">A</a>, <a href="#">C</a>,
-          <a href="#">A</a>
-        </p>
-      </footer>
+      <div class="grid-item">
+        100 clicks = 1k <img src="assets/goutte.webp" alt="raindrop" />
+      </div>
+      <div class="grid-item">
+        1k clicks = 10k <img src="assets/goutte.webp" alt="raindrop" />
+      </div>
+      <div class="grid-item">
+        1.5k clicks = 100k<img src="assets/goutte.webp" alt="raindrop" />
+      </div>
     </div>
-  </body>
+    <main>
+      <ul>
+        <li>
+          <button class="main-button" id="bonus-1">
+            <img src="assets/bonus1-draft.png" alt="first bonus" />
+          </button>
+        </li>
+        <li>
+          <button class="main-button" id="bonus-2">
+            <img src="assets/bonus2-draft.png" alt="second bonus" />
+          </button>
+        </li>
+        <li>
+          <button class="main-button" id="bonus-3">
+            <img src="assets/bonus3-draft.png" alt="third bonus" />
+          </button>
+        </li>
+      </ul>
+      <button id="cloud">
+        <img id="clicker" class="clicker" src="assets/clicker.png" alt="clicker button" />
+      </button>
+      <div class="score">Raindrops: <span id="score-display">0</span></div>
+    </main>
+    <div class="popup hidden">
+      <label class="popup-title">Enter your name : </label>
+      <input class="popup-input" type="text" placeholder="Your name" required />
+      <button class="popup-submit" type="submit">Continue</button>
+    </div>
+    <div class="overlay hidden"></div>
+    <footer>
+      <p>
+        Made with ❤️ by <a href="#">A</a>, <a href="#">C</a>,
+        <a href="#">A</a>
+      </p>
+    </footer>
+  </div>
+</body>
+
 </html>

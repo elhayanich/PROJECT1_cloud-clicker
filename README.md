@@ -1,6 +1,6 @@
 # Cloud Clicker
 
-![logo](assets/logo-README.png)
+![logo](assets/favicon.ico)
 
 ## Projet 1 [WCS](https://wildcodeschool.com)
 
