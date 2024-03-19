@@ -25,12 +25,13 @@ const bonus3 = {
   amount: 0,
 };
 //? les paliers (à définir)
-const steps = {
+/* const steps = {
   step1: 100,
   step2: 750,
   step3: 2500,
   step4: 10000,
-};
+}; */
+steps = [100, 750, 2500, 10000];
 //? noeuds HTML
 //! --Body
 const body = {
@@ -52,19 +53,19 @@ const header = {
 //* Fonctions, événements & affectations
 //? fonction qui va s'occuper de changer l'arrière-plan
 function checkStep() {
-  if (score >= steps.step2 && score < steps.step3) {
+  if (score >= steps[1] && score < steps[2]) {
     body.backgroundImage.style.backgroundImage =
       "url(./assets/background-2.png)";
     scoreMultiplier = 2;
     bonus1.isUnlocked = true;
   }
-  if (score >= steps.step3 && score < steps.step4) {
+  if (score >= steps[2] && score < steps[3]) {
     body.backgroundImage.style.backgroundImage =
       "url(./assets/background-3.png)";
     scoreMultiplier = 4;
     bonus2.isUnlocked = true;
   }
-  if (score >= steps.step4) {
+  if (score >= steps[3]) {
     body.backgroundImage.style.backgroundImage =
       "url(./assets/background-4.png)";
     scoreMultiplier = 8;
