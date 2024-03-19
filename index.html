@@ -14,7 +14,7 @@
   <div class="container">
     <header>
       <div class="logo">
-        <img src="assets/logo-draft.png" alt="logo nuage de Cloud clicker">
+        <img src="assets/logo-draft.png" alt="logo nuage de Cloud clicker" />
       </div>
       <button class="name">Your name</button>
       <!-- Ajouter dans le menu 3 liens : About, home, instructions -->
@@ -29,26 +29,48 @@
       </nav>
     </header>
     <div class="grid">
-      <div class="grid-item">15 clicks = 100 <img src="assets/goutte.webp" alt="raindrop"> </div>
-      <div class="grid-item">100 clicks = 1k <img src="assets/goutte.webp" alt="raindrop"> </div>
-      <div class="grid-item">1k clicks = 10k <img src="assets/goutte.webp" alt="raindrop"></div>
-      <div class="grid-item">1.5k clicks = 100k<img src="assets/goutte.webp" alt="raindrop"></div>
+      <div class="grid-item">
+        15 clicks = 100 <img src="assets/goutte.webp" alt="raindrop" />
+      </div>
+      <div class="grid-item">
+        100 clicks = 1k <img src="assets/goutte.webp" alt="raindrop" />
+      </div>
+      <div class="grid-item">
+        1k clicks = 10k <img src="assets/goutte.webp" alt="raindrop" />
+      </div>
+      <div class="grid-item">
+        1.5k clicks = 100k<img src="assets/goutte.webp" alt="raindrop" />
+      </div>
     </div>
     <main>
       <ul>
-        <li><button class="main-button" id="bonus-1"> <img src="assets/bonus1-draft.png" alt="first bonus"></button>
+        <li>
+          <button class="main-button" id="bonus-1">
+            <img src="assets/bonus1-draft.png" alt="first bonus" />
+          </button>
         </li>
-        <li><button class="main-button" id="bonus-2"><img src="assets/bonus2-draft.png" alt="second bonus"></button>
+        <li>
+          <button class="main-button" id="bonus-2">
+            <img src="assets/bonus2-draft.png" alt="second bonus" />
+          </button>
         </li>
-        <li><button class="main-button" id="bonus-3"><img src="assets/bonus3-draft.png" alt="third bonus"></button></li>
+        <li>
+          <button class="main-button" id="bonus-3">
+            <img src="assets/bonus3-draft.png" alt="third bonus" />
+          </button>
+        </li>
       </ul>
-      <!-- <button id="centerButton" class="center-button"><img src="assets/clicker.png" alt="clicker"></button>
-        <div id="score" class="score" ><span></span> Raindrops</div> -->
       <button id="cloud">
-        <img id="clicker" class="clicker" src="assets/clicker.png" alt="clicker button">
+        <img id="clicker" class="clicker" src="assets/clicker.png" alt="clicker button" />
       </button>
       <div class="score">Raindrops: <span id="score-display">0</span></div>
     </main>
+    <div class="popup hidden">
+      <label class="popup-title">Enter your name : </label>
+      <input class="popup-input" type="text" placeholder="Your name" required />
+      <button class="popup-submit" type="submit">Continue</button>
+    </div>
+    <div class="overlay hidden"></div>
     <footer>
       <p>
         Made with ❤️ by <a href="#">A</a>, <a href="#">C</a>,

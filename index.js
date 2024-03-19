@@ -2,7 +2,6 @@
 // à voir si on s'en sort avec une seul variable pour le score quand les fonctions seront faites
 let score = 0;
 let scoreMultiplier = 1;
-let enteredName = "Anonymous";
 //? les bonus (à définir)
 const bonusOne = document.querySelector("#bonus-1");
 let isBonusOneActive = false;
@@ -24,8 +23,7 @@ const stepOne = 100;
 const stepTwo = 750;
 const stepThree = 2500;
 const stepFour = 10000;
-//? noeuds HTML
-const playerName = document.querySelector(".name");
+// noeuds HTML
 const backgroundImage = document.querySelector("main");
 const scoreDisplay = document.querySelector("#score-display");
 const cloud = document.querySelector("#clicker");
@@ -57,7 +55,132 @@ function updateScore() {
   checkStep();
 }
 // le nom du joueur une fois entré sera stocké ici
-playerName.innerHTML = enteredName;
+// playerName.innerHTML = enteredName;
+
+//Header : Your name 
+const name = document.querySelector(".name");
+const overlay = document.querySelector(".overlay");
+const popup = document.querySelector(".popup");
+const popupInput = document.querySelector(".popup-input");
+const popupSubmit = document.querySelector(".popup-submit");
+
+// Pour afficher notre popup : 
+name.addEventListener("click", () => {
+    overlay.classList.toggle("hidden");
+    popup.classList.toggle("hidden");
+  });
+
+//Pour masquer notre popup: 
+overlay.addEventListener("click", () => {
+    overlay.classList.toggle("hidden");
+    popup.classList.toggle("hidden");
+  });
+
+//Entrer le nom du joueur ( en cliquant sur entrer) : ( testée : ça fonctionne) 
+popupInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      const errors = [];
+      if (popupInput.value === "" || popupInput.value == null) {
+        errors.push(`Name is required`);
+      }
+      if (errors.length > 0) {
+        e.preventDefault();
+        alert(errors.join(","));
+        return;
+      } else {
+        name.innerHTML = `${popupInput.value}`;
+        overlay.classList.toggle("hidden");
+        popup.classList.toggle("hidden");
+      }
+    }
+  });
+
+//Entrer le nom du joueur ( en cliquant sur la souris): 
+
+popupSubmit.addEventListener("click", (e) => {
+    const errors = [];
+    if (popupInput.value === "" || popupInput.value == null) {
+      errors.push(`Name is required`);
+    }
+    if (errors.length > 0) {
+      e.preventDefault();
+      alert(errors.join(","));
+      return;
+    } else {
+      name.innerHTML = `${popupInput.value}`;
+      overlay.classList.toggle("hidden");
+      popup.classList.toggle("hidden");
+    }
+  });
+
+
+
+
+
+// Raindrops si on clique sur le cloud
+// const cloud = document.querySelector("#clicker"); ( Je la commente car elle est déja declarée)
+cloud.addEventListener("click", () => {
+    createRaindrops(cloud);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // fonction qui gère l'augmentation du score
 function augmentScore(a = bonusOneNumber) {
   score = score + a * scoreMultiplier;
