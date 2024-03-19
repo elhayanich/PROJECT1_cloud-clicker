@@ -100,7 +100,7 @@ header {
 }
 
 main {
-    background-image: url("assets/background-1.png"); /* Path to your background image */
+    background-image: url("assets/background-1.png"); /* Path to the  background image : à modifier pour chaque palier  */
     background-size: cover;
     background-position: center;
     height: 90%;
@@ -154,6 +154,71 @@ ul {
     position: absolute;
     bottom: calc(10% + 1.875rem);
 }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: var(--pink);
+}
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: var(--pink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    border: .1em solid black;
+    box-shadow: 0 0 .6em .2em grey;
+    padding: 1em;
+    text-align: center;
+}
+.popup-close {
+    font-size: 2em;
+    color: black;
+    align-self: flex-end;
+}
+.popup-title {
+    font-size: 1.5em;
+    color: var(--black);
+    padding-bottom: 2rem;
+}
+.popup-input {
+    background-color: var(--white);
+    color:grey;
+    border: none;
+    border-radius: .5em;
+    font-size: 1em;
+    margin: .5em;
+    padding: .5em;
+    text-align: center;
+}
+.popup-input:focus {
+    outline: none;
+    box-shadow: 0 0 .2em .1em black;
+}
+.popup-submit {
+    background-color: var(--green-unlocked);
+    color: #fcf9f9;
+    border: none;
+    border-radius: .5em;
+    font-size: 1em;
+    margin: .5em;
+    text-align: center;
+    padding: .2em;
+}
+.hidden {
+    display: none;
+}
+
 
 footer {
     background-color: var(--pink);
