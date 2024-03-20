@@ -264,16 +264,23 @@ ul {
 }
 
 .score {
-  color: white;
-  background-color: #f9429e;
+  background-color: var(--white);
+  color: #f9429e;
+  font-family: "Museo", sans-serif; 
+  text-shadow: 0 0 0.5rem white, 0 0 0.5rem black; 
   line-height: 2em;
   text-align: center;
-  border: 0.125rem groove white;
   width: 30%;
   border-radius: 15px;
-  /* display: block; */
   position: absolute;
   bottom: calc(10% + 1.875rem);
+  font-size: 2em; 
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.score img {
+  width: 1.5rem;
 }
 
 .overlay {
