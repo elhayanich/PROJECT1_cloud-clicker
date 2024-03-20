@@ -94,10 +94,12 @@ header {
   align-items: center;
   border: 1px solid var(--black);
   border-radius: 10px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .grid-item img {
-  width: 13px;
+  width: 0.8125rem;
 }
 
 main {
