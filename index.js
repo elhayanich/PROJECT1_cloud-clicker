@@ -42,30 +42,8 @@ const header = {
   menuList: document.querySelector(".menu-list"),
 };
 
-//* Fonctions, événements & affectations
-//? fonction qui va s'occuper de changer l'arrière-plan
-function checkStep() {
-  if (score >= steps[1] && score < steps[2]) {
-    body.backgroundImage.style.backgroundImage =
-      "url(./assets/background-2.png)";
-    scoreMultiplier = 2;
-    bonus1.isUnlocked = true;
-  }
-  if (score >= steps[2] && score < steps[3]) {
-    body.backgroundImage.style.backgroundImage =
-      "url(./assets/background-3.png)";
-    scoreMultiplier = 4;
-    bonus2.isUnlocked = true;
-  }
-  if (score >= steps[3]) {
-    body.backgroundImage.style.backgroundImage =
-      "url(./assets/background-4.png)";
-    scoreMultiplier = 8;
-    bonus3.isUnlocked = true;
-  }
-}
-
-// Foction qui chnage la couleur du palier dés qu'il est atteint ( testée ok , mais petits details à venir - chay) 
+// //* Fonctions, événements & affectations
+// Fonction qui chnage la couleur du palier et des background dés qu'il est atteint ( testée ok , mais petits details à venir - chay) 
 function checkStep() {
   if (score >= steps[0] && score < steps[1]) {
     body.backgroundImage.style.backgroundImage =
