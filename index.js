@@ -62,7 +62,7 @@ function checkStep() {
         "url(./assets/background-2.png)";
       scoreMultiplier = 2;
       bonus1.isUnlocked = true;
-      document.querySelectorAll(".grid-item")[0].classList.add("reached");
+      // document.querySelectorAll(".grid-item")[0].classList.add("reached");
     }
   }
   if (!reachedStep2) {
@@ -76,7 +76,7 @@ function checkStep() {
         "url(./assets/background-3.png)";
       scoreMultiplier = 4;
       bonus2.isUnlocked = true;
-      document.querySelectorAll(".grid-item")[1].classList.add("reached");
+      // document.querySelectorAll(".grid-item")[1].classList.add("reached");
     }
   }
   if (!reachedStep3) {
@@ -86,14 +86,14 @@ function checkStep() {
         "url(./assets/background-4.png)";
       scoreMultiplier = 8;
       bonus3.isUnlocked = true;
-      document.querySelectorAll(".grid-item")[2].classList.add("reached");
+      // document.querySelectorAll(".grid-item")[2].classList.add("reached");
     }
   }
   if (!reachedStep4) {
     if (score >= steps[3]) {
       // Gérer le dernier palier
       reachedStep4;
-      document.querySelectorAll(".grid-item")[3].classList.add("reached");
+      // document.querySelectorAll(".grid-item")[3].classList.add("reached");
     }
   }
   if (score >= steps[3]) {

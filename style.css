@@ -201,7 +201,6 @@ header {
   justify-content: center;
   align-items: center;
   border: 1px solid var(--black);
-  border-radius: 10px;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
