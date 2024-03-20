@@ -173,6 +173,7 @@ header.overlay.addEventListener("click", () => {
   header.popup.classList.toggle("hidden");
 });
 //Entrer le nom du joueur en cliquant sur entrer : testée : ça fonctionne - chay)
+let playerName = "";
 header.popupInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     const errors = [];
@@ -184,12 +185,14 @@ header.popupInput.addEventListener("keypress", (e) => {
       alert(errors.join(","));
       return;
     } else {
-      header.userName.innerHTML = `${header.popupInput.value}`;
+      playerName = header.popupInput.value;
+      header.userName.innerHTML = `${playerName}`;
       header.overlay.classList.toggle("hidden");
       header.popup.classList.toggle("hidden");
     }
   }
 });
+
 //Entrer le nom du joueur ( en cliquant sur la souris :  : testée : ça fonctionne - chay)
 header.popupSubmit.addEventListener("click", (e) => {
   const errors = [];
@@ -201,7 +204,8 @@ header.popupSubmit.addEventListener("click", (e) => {
     alert(errors.join(","));
     return;
   } else {
-    header.userName.innerHTML = `${header.popupInput.value}`;
+    playerName = header.popupInput.value;
+    header.userName.innerHTML = `${playerName}`;
     header.overlay.classList.toggle("hidden");
     header.popup.classList.toggle("hidden");
   }
@@ -223,6 +227,16 @@ instructionsBtn.addEventListener("click", function () {
   instructionsElement.classList.toggle("hidden");
   instructionsElement.classList.toggle("visible");
   body.backgroundImage.classList.toggle("blur-background");
+});
+
+// fermer les instructions + le menu burger
+const acceptMissionButton = document.querySelector(".accept-mission");
+
+acceptMissionButton.addEventListener("click", function () {
+  instructionsElement.classList.add("hidden");
+  instructionsElement.classList.remove("visible");
+  menuList.classList.remove("active");
+  body.backgroundImage.classList.remove("blur-background");
 });
 
 // Menu Burger

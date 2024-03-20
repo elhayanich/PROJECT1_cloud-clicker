@@ -163,6 +163,22 @@ header {
   display: block;
 }
 
+.accept-mission{
+  background-color: var(--green-unlocked);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5em;
+  font-size: 0.8em;
+  margin: 0.5em;
+  text-align: center;
+  padding: 0.2em;
+  position: absolute;
+  right: 1rem;
+}
+
+
+
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -206,7 +222,7 @@ main {
   -webkit-transition: background 660ms ease-in-out;
   -o-transition: background 660ms ease-in-out; /* sensé fonctionner sur Opera... */
   transition: background 660ms ease-in-out;
-  background-image: url("assets/background-1.png"); /* Path to the  background image : à modifier pour chaque palier  */
+  background-image: url("assets/background-1.png"); 
   background-size: cover;
   background-position: center;
   height: 90%;
