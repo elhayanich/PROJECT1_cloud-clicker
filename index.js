@@ -5,32 +5,24 @@ let scoreMultiplier = 1;
 //? les bonus (à définir)
 const bonus1 = {
   element: document.querySelector("#bonus-1"),
-  isActive: false,
   isUnlocked: false,
   cost: 100,
   amount: 0,
 };
 const bonus2 = {
   element: document.querySelector("#bonus-2"),
-  isActive: false,
   isUnlocked: false,
   cost: 750,
   amount: 0,
 };
 const bonus3 = {
   element: document.querySelector("#bonus-3"),
-  isActive: false,
   isUnlocked: false,
   cost: 2500,
   amount: 0,
 };
+let areBonusActive = false;
 //? les paliers (à définir)
-/* const steps = {
-  step1: 100,
-  step2: 750,
-  step3: 2500,
-  step4: 10000,
-}; */
 steps = [100, 750, 2500, 10000];
 //? noeuds HTML
 //! --Body
@@ -83,14 +75,8 @@ function augmentScore(a = 1) {
   score = score + a * scoreMultiplier;
   updateScore();
 }
-function b1AugmentScore() {
-  augmentScore(bonus1.amount);
-}
-function b2AugmentScore() {
-  augmentScore(bonus2.amount);
-}
-function b3AugmentScore() {
-  augmentScore(bonus3.amount);
+function bonusAugmentScore() {
+  augmentScore(bonus1.amount + bonus2.amount + bonus3.amount);
 }
 // événement qui augmente le score à chaque fois qu'on clicke sur le nuage
 body.cloud.addEventListener("click", () => {
@@ -98,9 +84,10 @@ body.cloud.addEventListener("click", () => {
   // ajouter une animation (CSS?) quand on clicke sur le nuage
 });
 //? fonctions pour les bonus
-function activeBonusIncrement(bool, func) {
-  if (bool != true) {
-    setInterval(func, 1500);
+function activeBonus() {
+  if (areBonusActive != true) {
+    setInterval(bonusAugmentScore, 1500);
+    areBonusActive = true;
   }
 }
 // bonus#1
@@ -109,8 +96,7 @@ bonus1.element.addEventListener("click", () => {
     score -= bonus1.cost;
     updateScore();
     bonus1.amount++;
-    activeBonusIncrement(bonus1.isActive, b1AugmentScore);
-    bonus1.isActive = true;
+    activeBonus();
   }
 });
 // bonus#2
@@ -119,8 +105,7 @@ bonus2.element.addEventListener("click", () => {
     score -= bonus2.cost;
     updateScore();
     bonus2.amount++;
-    activeBonusIncrement(bonus2.isActive, b2AugmentScore);
-    bonus2.isActive = true;
+    activeBonus();
   }
 });
 // bonus#3
@@ -129,8 +114,7 @@ bonus3.element.addEventListener("click", () => {
     score -= bonus3.cost;
     updateScore();
     bonus3.amount++;
-    activeBonusIncrement(bonus3.isActive, b3AugmentScore);
-    bonus3.isActive = true;
+    activeBonus();
   }
 });
 
