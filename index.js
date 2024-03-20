@@ -24,6 +24,10 @@ const bonus3 = {
 let areBonusActive = false;
 //? les paliers (à définir)
 steps = [100, 250, 500, 1000];
+let reachedStep1 = false;
+let reachedStep2 = false;
+let reachedStep3 = false;
+let reachedStep4 = false;
 //? noeuds HTML
 //! --Body
 const body = {
@@ -42,40 +46,65 @@ const header = {
   menuList: document.querySelector(".menu-list"),
 };
 
-// //* Fonctions, événements & affectations
-// Fonction qui chnage la couleur du palier et des background dés qu'il est atteint ( testée ok , mais petits details à venir - chay) 
+//* Fonctions, événements & affectations
+//? fonction qui va s'occuper de changer l'arrière-plan
+// Fonction qui chnage la couleur du palier dés qu'il est atteint
 function checkStep() {
-  if (score >= steps[0] && score < steps[1]) {
-    body.backgroundImage.style.backgroundImage =
-      "url(./assets/background-2.png)";
-    scoreMultiplier = 2;
-    bonus1.isUnlocked = true;
-    document.querySelectorAll('.grid-item')[0].classList.add('reached'); 
+  if (!reachedStep1) {
+    if (
+      (score >= steps[0] && score < steps[1]) ||
+      reachedStep2 ||
+      reachedStep3 ||
+      reachedStep4
+    ) {
+      reachedStep1 = true;
+      body.backgroundImage.style.backgroundImage =
+        "url(./assets/background-2.png)";
+      scoreMultiplier = 2;
+      bonus1.isUnlocked = true;
+      document.querySelectorAll(".grid-item")[0].classList.add("reached");
+    }
   }
-  if (score >= steps[1] && score < steps[2]) {
-    body.backgroundImage.style.backgroundImage =
-      "url(./assets/background-3.png)";
-    scoreMultiplier = 4;
-    bonus2.isUnlocked = true;
-    document.querySelectorAll('.grid-item')[1].classList.add('reached'); 
+  if (!reachedStep2) {
+    if (
+      (score >= steps[1] && score < steps[2]) ||
+      reachedStep3 ||
+      reachedStep4
+    ) {
+      reachedStep2 = true;
+      body.backgroundImage.style.backgroundImage =
+        "url(./assets/background-3.png)";
+      scoreMultiplier = 4;
+      bonus2.isUnlocked = true;
+      document.querySelectorAll(".grid-item")[1].classList.add("reached");
+    }
   }
-  if (score >= steps[2] && score < steps[3]) {
-    body.backgroundImage.style.backgroundImage =
-      "url(./assets/background-4.png)";
-    scoreMultiplier = 8;
-    bonus3.isUnlocked = true;
-    document.querySelectorAll('.grid-item')[2].classList.add('reached'); 
+  if (!reachedStep3) {
+    if ((score >= steps[2] && score < steps[3]) || reachedStep4) {
+      reachedStep3 = true;
+      body.backgroundImage.style.backgroundImage =
+        "url(./assets/background-4.png)";
+      scoreMultiplier = 8;
+      bonus3.isUnlocked = true;
+      document.querySelectorAll(".grid-item")[2].classList.add("reached");
+    }
+  }
+  if (!reachedStep4) {
+    if (score >= steps[3]) {
+      // Gérer le dernier palier
+      reachedStep4;
+      document.querySelectorAll(".grid-item")[3].classList.add("reached");
+    }
   }
   if (score >= steps[3]) {
-    // Gérer le dernier palier
-    document.querySelectorAll('.grid-item')[3].classList.add('reached');
-    body.backgroundImage.classList.add('blur-background'); 
-    const messageElement = document.createElement('div');
-    messageElement.textContent = "You fulfilled your mission. Enjoy eternity in paradise!";
-    messageElement.classList.add('message'); 
-    document.body.appendChild(messageElement); 
+    body.backgroundImage.classList.add("blur-background");
+    const messageElement = document.createElement("div");
+    messageElement.textContent =
+      "You fulfilled your mission. Enjoy eternity in paradise!";
+    messageElement.classList.add("message");
+    document.body.appendChild(messageElement);
   } else {
-    body.backgroundImage.classList.remove('blur-background');
+    body.backgroundImage.classList.remove("blur-background");
   }
 }
 
@@ -144,7 +173,7 @@ header.overlay.addEventListener("click", () => {
   header.popup.classList.toggle("hidden");
 });
 //Entrer le nom du joueur en cliquant sur entrer : testée : ça fonctionne - chay)
-let playerName = ""; 
+let playerName = "";
 header.popupInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     const errors = [];
@@ -156,7 +185,7 @@ header.popupInput.addEventListener("keypress", (e) => {
       alert(errors.join(","));
       return;
     } else {
-      playerName = header.popupInput.value; 
+      playerName = header.popupInput.value;
       header.userName.innerHTML = `${playerName}`;
       header.overlay.classList.toggle("hidden");
       header.popup.classList.toggle("hidden");
@@ -175,7 +204,7 @@ header.popupSubmit.addEventListener("click", (e) => {
     alert(errors.join(","));
     return;
   } else {
-    playerName = header.popupInput.value; 
+    playerName = header.popupInput.value;
     header.userName.innerHTML = `${playerName}`;
     header.overlay.classList.toggle("hidden");
     header.popup.classList.toggle("hidden");
@@ -183,42 +212,36 @@ header.popupSubmit.addEventListener("click", (e) => {
 });
 
 // Vibration si on clique sur le cloud
-const clicker = document.getElementById('clicker');
+body.cloud.addEventListener("click", () => {
+  body.cloud.classList.add("clicked");
 
-clicker.addEventListener('click', ()=> {
-  clicker.classList.add('clicked');
-
-setTimeout(() => {
-  clicker.classList.remove('clicked');
-}, 500); 
+  setTimeout(() => {
+    clicker.classList.remove("clicked");
+  }, 500);
 });
 
-
 // Affichage instructions
-const instructionsBtn = document.getElementById('instructions-btn');
-const instructionsElement = document.querySelector('.instructions');
-instructionsBtn.addEventListener('click', function() {
-  instructionsElement.classList.toggle('hidden');
-  instructionsElement.classList.toggle('visible');
-  body.backgroundImage.classList.toggle('blur-background');
+const instructionsBtn = document.getElementById("instructions-btn");
+const instructionsElement = document.querySelector(".instructions");
+instructionsBtn.addEventListener("click", function () {
+  instructionsElement.classList.toggle("hidden");
+  instructionsElement.classList.toggle("visible");
+  body.backgroundImage.classList.toggle("blur-background");
 });
 
 // fermer les instructions + le menu burger
-const acceptMissionButton = document.querySelector('.accept-mission');
+const acceptMissionButton = document.querySelector(".accept-mission");
 
-acceptMissionButton.addEventListener('click', function() {
-
-  instructionsElement.classList.add('hidden');
-  instructionsElement.classList.remove('visible');
-  menuList.classList.remove('active');
-  body.backgroundImage.classList.remove('blur-background');
+acceptMissionButton.addEventListener("click", function () {
+  instructionsElement.classList.add("hidden");
+  instructionsElement.classList.remove("visible");
+  menuList.classList.remove("active");
+  body.backgroundImage.classList.remove("blur-background");
 });
 
-
-
-// Menu Burger 
-const burgerMenu = document.querySelector('.burger-menu');
-const menuList = document.querySelector('.menu-list');
-burgerMenu.addEventListener('click', function() {
-  menuList.classList.toggle('active');
+// Menu Burger
+const burgerMenu = document.querySelector(".burger-menu");
+const menuList = document.querySelector(".menu-list");
+burgerMenu.addEventListener("click", function () {
+  menuList.classList.toggle("active");
 });
