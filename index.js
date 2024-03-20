@@ -145,7 +145,7 @@ header.overlay.addEventListener("click", () => {
   header.overlay.classList.toggle("hidden");
   header.popup.classList.toggle("hidden");
 });
-//Entrer le nom du joueur ( en cliquant sur entrer) : ( testée : ça fonctionne)
+//Entrer le nom du joueur en cliquant sur entrer : testée : ça fonctionne - chay)
 header.popupInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     const errors = [];
@@ -163,7 +163,7 @@ header.popupInput.addEventListener("keypress", (e) => {
     }
   }
 });
-//Entrer le nom du joueur ( en cliquant sur la souris):
+//Entrer le nom du joueur ( en cliquant sur la souris :  : testée : ça fonctionne - chay)
 header.popupSubmit.addEventListener("click", (e) => {
   const errors = [];
   if (header.popupInput.value === "" || header.popupInput.value == null) {
@@ -180,10 +180,43 @@ header.popupSubmit.addEventListener("click", (e) => {
   }
 });
 
-// Raindrops si on clique sur le cloud
-body.cloud.addEventListener("click", () => {
-  createRaindrops(body.cloud);
+// Vibration si on clique sur le cloud
+const clicker = document.getElementById('clicker');
+
+clicker.addEventListener('click', ()=> {
+  clicker.classList.add('clicked');
+
+setTimeout(() => {
+  clicker.classList.remove('clicked');
+}, 500); 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // fonction qui gère le menu burger
 header.burgerMenu.addEventListener("click", function () {
