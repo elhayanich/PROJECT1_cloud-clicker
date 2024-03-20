@@ -12,18 +12,18 @@ const bonus1 = {
 const bonus2 = {
   element: document.querySelector("#bonus-2"),
   isUnlocked: false,
-  cost: 750,
+  cost: 250,
   amount: 0,
 };
 const bonus3 = {
   element: document.querySelector("#bonus-3"),
   isUnlocked: false,
-  cost: 2500,
+  cost: 500,
   amount: 0,
 };
 let areBonusActive = false;
 //? les paliers (à définir)
-steps = [100, 750, 2500, 10000];
+steps = [100, 250, 500, 1000];
 //? noeuds HTML
 //! --Body
 const body = {
@@ -64,6 +64,43 @@ function checkStep() {
     bonus3.isUnlocked = true;
   }
 }
+
+// Foction qui chnage la couleur du palier dés qu'il est atteint ( testée ok , mais petits details à venir - chay) 
+function checkStep() {
+  if (score >= steps[0] && score < steps[1]) {
+    body.backgroundImage.style.backgroundImage =
+      "url(./assets/background-2.png)";
+    scoreMultiplier = 2;
+    bonus1.isUnlocked = true;
+    document.querySelectorAll('.grid-item')[0].classList.add('reached'); 
+  }
+  if (score >= steps[1] && score < steps[2]) {
+    body.backgroundImage.style.backgroundImage =
+      "url(./assets/background-3.png)";
+    scoreMultiplier = 4;
+    bonus2.isUnlocked = true;
+    document.querySelectorAll('.grid-item')[1].classList.add('reached'); 
+  }
+  if (score >= steps[2] && score < steps[3]) {
+    body.backgroundImage.style.backgroundImage =
+      "url(./assets/background-4.png)";
+    scoreMultiplier = 8;
+    bonus3.isUnlocked = true;
+    document.querySelectorAll('.grid-item')[2].classList.add('reached'); 
+  }
+  if (score >= steps[3]) {
+    // Gérer le dernier palier
+    document.querySelectorAll('.grid-item')[3].classList.add('reached');
+    body.backgroundImage.classList.add('blur-background'); 
+    const messageElement = document.createElement('div');
+    messageElement.textContent = "You fulfilled your mission. Enjoy eternity in paradise!";
+    messageElement.classList.add('message'); 
+    document.body.appendChild(messageElement); 
+  } else {
+    body.backgroundImage.classList.remove('blur-background');
+  }
+}
+
 // fonction qui change l'affichage du score
 function updateScore() {
   body.scoreDisplay.innerHTML = score;
@@ -81,7 +118,6 @@ function bonusAugmentScore() {
 // événement qui augmente le score à chaque fois qu'on clicke sur le nuage
 body.cloud.addEventListener("click", () => {
   augmentScore(1);
-  // ajouter une animation (CSS?) quand on clicke sur le nuage
 });
 //? fonctions pour les bonus
 function activeBonus() {
@@ -176,33 +212,18 @@ setTimeout(() => {
 });
 
 
+// Affichage instructions
+const instructionsBtn = document.getElementById('instructions-btn');
+const instructionsElement = document.querySelector('.instructions');
+instructionsBtn.addEventListener('click', function() {
+  instructionsElement.classList.toggle('hidden');
+  instructionsElement.classList.toggle('visible');
+  body.backgroundImage.classList.toggle('blur-background');
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fonction qui gère le menu burger
-header.burgerMenu.addEventListener("click", function () {
-  header.menuList.classList.toggle("active");
+// Menu Burger 
+const burgerMenu = document.querySelector('.burger-menu');
+const menuList = document.querySelector('.menu-list');
+burgerMenu.addEventListener('click', function() {
+  menuList.classList.toggle('active');
 });
