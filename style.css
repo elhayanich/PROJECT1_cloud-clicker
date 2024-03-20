@@ -163,7 +163,7 @@ header {
   display: block;
 }
 
-.accept-mission{
+.accept-mission {
   background-color: var(--green-unlocked);
   color: var(--white);
   border: none;
@@ -175,9 +175,6 @@ header {
   position: absolute;
   right: 1rem;
 }
-
-
-
 
 .grid {
   display: grid;
@@ -222,7 +219,7 @@ main {
   -webkit-transition: background 660ms ease-in-out;
   -o-transition: background 660ms ease-in-out; /* sensé fonctionner sur Opera... */
   transition: background 660ms ease-in-out;
-  background-image: url("assets/background-1.png"); 
+  background-image: url("assets/background-1.png");
   background-size: cover;
   background-position: center;
   height: 90%;
@@ -288,15 +285,15 @@ ul {
 .score {
   background-color: var(--white);
   color: #f9429e;
-  font-family: "Museo", sans-serif; 
-  text-shadow: 0 0 0.5rem white, 0 0 0.5rem black; 
+  font-family: "Museo", sans-serif;
+  text-shadow: 0 0 0.5rem white, 0 0 0.5rem black;
   line-height: 2em;
   text-align: center;
-  width: 30%;
+  width: 35%;
   border-radius: 15px;
   position: absolute;
   bottom: calc(10% + 1.875rem);
-  font-size: 2em; 
+  font-size: 1.25em;
   font-weight: bold;
   white-space: nowrap;
 }
@@ -304,9 +301,10 @@ ul {
 .score img {
   width: 1.5rem;
 }
+
 @media screen and (width >= 1200px) {
   .score {
-    width: 10%;
+    width: 13%;
   }
 }
 
