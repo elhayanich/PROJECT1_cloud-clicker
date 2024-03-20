@@ -284,9 +284,8 @@ ul {
 
 .score {
   background-color: var(--white);
-  color: #f9429e;
+  color:  #f9429e;
   font-family: "Museo", sans-serif;
-  text-shadow: 0 0 0.5rem white, 0 0 0.5rem black;
   line-height: 2em;
   text-align: center;
   width: 35%;
