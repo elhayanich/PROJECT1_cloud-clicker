@@ -215,11 +215,13 @@ header {
 }
 
 .grid-item.reached::after {
-  content: '\2713';
+  content: "\2713";
   position: absolute;
-  top: 0;
-  right: -20px;
+  top: -2px;
+  right: -16px;
   color: green;
+}
+@media screen and (width >= 1200px) {
 }
 
 main {
@@ -246,11 +248,10 @@ ul {
   margin: 0;
 }
 
-
 .main-button {
   background-color: transparent;
   border: none;
-  padding: 5px; 
+  padding: 5px;
   margin: 5px;
 }
 
@@ -258,10 +259,9 @@ ul {
   width: 5rem;
 }
 
-
 .bonus-glow {
-  border: 8px solid #00ff00; 
-  box-shadow: 0 0 5px 2px #00ff00; 
+  border: 8px solid #00ff00;
+  box-shadow: 0 0 5px 2px #00ff00;
   border-radius: 50px;
 }
 
@@ -278,9 +278,8 @@ ul {
 }
 
 .blinking {
-  animation: blink 1s ease-in-out 4; 
+  animation: blink 1s ease-in-out 4;
 }
-
 
 .clicker {
   margin-top: 2rem;

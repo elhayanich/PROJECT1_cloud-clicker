@@ -76,8 +76,8 @@ function checkScore() {
 
 // Fonction pour gérer le clignotement des boutons bonus
 function blinkBonus(element) {
-  element.classList.add("blinking"); 
-  setTimeout(function() {
+  element.classList.add("blinking");
+  setTimeout(function () {
     element.classList.remove("blinking");
   }, 3000);
 }
@@ -93,7 +93,7 @@ function checkStep() {
       bonus1.isUnlocked = true;
       bonus1.element.classList.add("bonus-glow");
       document.querySelectorAll(".grid-item")[0].classList.add("reached");
-      blinkBonus(bonus1.element); 
+      blinkBonus(bonus1.element);
     }
   }
   if (!reachedStep2) {
@@ -106,7 +106,7 @@ function checkStep() {
       bonus2.isUnlocked = true;
       bonus2.element.classList.add("bonus-glow");
       document.querySelectorAll(".grid-item")[1].classList.add("reached");
-      blinkBonus(bonus2.element); 
+      blinkBonus(bonus2.element);
     }
   }
   if (!reachedStep3) {
@@ -129,19 +129,18 @@ function checkStep() {
       reachedStep4;
       document.querySelectorAll(".grid-item")[3].classList.add("reached");
     }
-  }
-  if (score >= steps[3]) {
-    body.backgroundImage.classList.add("blur-background");
-    const messageElement = document.createElement("div");
-    messageElement.textContent =
-      "You fulfilled your mission. Enjoy eternity in paradise!";
-    messageElement.classList.add("message");
-    document.body.appendChild(messageElement);
-  } else {
-    body.backgroundImage.classList.remove("blur-background");
+    if (score >= steps[3]) {
+      body.backgroundImage.classList.add("blur-background");
+      const messageElement = document.createElement("div");
+      messageElement.textContent =
+        "You fulfilled your mission. Enjoy eternity in paradise!";
+      messageElement.classList.add("message");
+      document.body.appendChild(messageElement);
+    } /*  else {
+      body.backgroundImage.classList.remove("blur-background");
+    } */ /* n'est pas utilisé */
   }
 }
-
 
 // fonction qui change l'affichage du score
 function updateScore() {
@@ -176,7 +175,7 @@ function activeBonus() {
 }
 // bonus#1
 bonus1.element.addEventListener("click", () => {
-  if (score >= bonus1.cost ) {
+  if (score >= bonus1.cost) {
     score -= bonus1.cost;
     updateScore();
     bonus1.amount++;
