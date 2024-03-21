@@ -210,8 +210,16 @@ header {
   margin-left: 0.125rem;
 }
 
-.grid-item.reached {
-  background-color: var(--green-unlocked);
+.grid-item {
+  position: relative;
+}
+
+.grid-item.reached::after {
+  content: '\2713';
+  position: absolute;
+  top: 0;
+  right: -20px;
+  color: green;
 }
 
 main {
@@ -238,15 +246,41 @@ ul {
   margin: 0;
 }
 
+
 .main-button {
   background-color: transparent;
   border: none;
-  padding: 1rem;
+  padding: 5px; 
+  margin: 5px;
 }
 
 .main-button img {
   width: 5rem;
 }
+
+
+.bonus-glow {
+  border: 8px solid #00ff00; 
+  box-shadow: 0 0 5px 2px #00ff00; 
+  border-radius: 50px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blinking {
+  animation: blink 1s ease-in-out 4; 
+}
+
 
 .clicker {
   margin-top: 2rem;
