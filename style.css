@@ -28,7 +28,7 @@ html {
   .container {
     display: grid;
     max-height: 95%;
-    grid-template-columns: 10% auto;
+    grid-template-columns: 12% auto;
     grid-template-rows: 1fr 2fr;
     background-color: var(--pink);
   }
@@ -206,7 +206,7 @@ header {
 }
 
 .grid-item img {
-  /* width: 0.8125rem; */
+  width: 0.8rem;
   margin-left: 0.125rem;
 }
 
@@ -317,7 +317,7 @@ ul {
 
 .score {
   background-color: var(--white);
-  color:  #f9429e;
+  color: #f9429e;
   font-family: "Museo", sans-serif;
   line-height: 2em;
   text-align: center;
@@ -331,18 +331,15 @@ ul {
 }
 
 .score img {
-  width: 1.5rem;
+  width: 1.125rem;
+  position: relative;
+  top: 0.125rem;
 }
 
 @media screen and (width >= 1200px) {
   .score {
     width: 13%;
   }
-}
-
-.score img {
-  position: relative;
-  top: 2px;
 }
 
 .overlay {
