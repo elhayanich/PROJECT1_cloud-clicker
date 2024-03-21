@@ -1,8 +1,11 @@
 //* Variables
-// à voir si on s'en sort avec une seul variable pour le score quand les fonctions seront faites
+//? score
 let score = 0;
 let scoreMultiplier = 1;
-//? les bonus (à définir)
+let storedScore = localStorage.getItem("score");
+//? nom du joueur
+let playerName = localStorage.getItem("playerName");
+//? les bonus (à re-définir?)
 const bonus1 = {
   element: document.querySelector("#bonus-1"),
   isUnlocked: false,
@@ -47,16 +50,30 @@ const header = {
 };
 
 //* Fonctions, événements & affectations
+//? fonction pour initialiser l'état du jeu au démarrage
+function checkState() {
+  checkName();
+  checkScore();
+}
+checkState();
+//? fonction pour remplacer "Your Name" par la valeur stockée dans localStorage (si elle existe)
+function checkName() {
+  if (playerName !== "" && playerName != null) {
+    header.userName.textContent = playerName;
+  }
+}
+//? fonction qui remplace la valeur par défaut du score si une autre valeur existe dans localStorage
+function checkScore() {
+  if (storedScore !== "" && storedScore != null) {
+    body.scoreDisplay.innerHTML = storedScore;
+    checkStep();
+  }
+}
 //? fonction qui va s'occuper de changer l'arrière-plan
 // Fonction qui chnage la couleur du palier dés qu'il est atteint
 function checkStep() {
   if (!reachedStep1) {
-    if (
-      (score >= steps[0] && score < steps[1]) ||
-      reachedStep2 ||
-      reachedStep3 ||
-      reachedStep4
-    ) {
+    if (score >= steps[0] && score < steps[1]) {
       reachedStep1 = true;
       body.backgroundImage.style.backgroundImage =
         "url(./assets/background-2.png)";
@@ -66,11 +83,8 @@ function checkStep() {
     }
   }
   if (!reachedStep2) {
-    if (
-      (score >= steps[1] && score < steps[2]) ||
-      reachedStep3 ||
-      reachedStep4
-    ) {
+    if (score >= steps[1] && score < steps[2]) {
+      reachedStep1 = true;
       reachedStep2 = true;
       body.backgroundImage.style.backgroundImage =
         "url(./assets/background-3.png)";
@@ -80,7 +94,9 @@ function checkStep() {
     }
   }
   if (!reachedStep3) {
-    if ((score >= steps[2] && score < steps[3]) || reachedStep4) {
+    if (score >= steps[2] && score < steps[3]) {
+      reachedStep1 = true;
+      reachedStep2 = true;
       reachedStep3 = true;
       body.backgroundImage.style.backgroundImage =
         "url(./assets/background-4.png)";
@@ -92,7 +108,10 @@ function checkStep() {
   if (!reachedStep4) {
     if (score >= steps[3]) {
       // Gérer le dernier palier
-      reachedStep4;
+      reachedStep1 = true;
+      reachedStep2 = true;
+      reachedStep3 = true;
+      reachedStep4 = true;
       // document.querySelectorAll(".grid-item")[3].classList.add("reached");
     }
   }
@@ -118,6 +137,7 @@ function updateScore() {
 function augmentScore(a = 1) {
   score = score + a * scoreMultiplier;
   updateScore();
+  localStorage.setItem("score", score);
 }
 function bonusAugmentScore() {
   augmentScore(bonus1.amount + bonus2.amount + bonus3.amount);
@@ -172,8 +192,7 @@ header.overlay.addEventListener("click", () => {
   header.overlay.classList.toggle("hidden");
   header.popup.classList.toggle("hidden");
 });
-//Entrer le nom du joueur en cliquant sur entrer : testée : ça fonctionne - chay)
-let playerName = "";
+//Entrer le nom du joueur en cliquant sur "enter")
 header.popupInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     const errors = [];
@@ -185,15 +204,17 @@ header.popupInput.addEventListener("keypress", (e) => {
       alert(errors.join(","));
       return;
     } else {
-      playerName = header.popupInput.value;
-      header.userName.innerHTML = `${playerName}`;
+      /* playerName = header.popupInput.value;
+      header.userName.innerHTML = `${playerName}`; */
+      localStorage.setItem("playerName", header.popupInput.value);
+      header.userName.textContent = localStorage.getItem("playerName");
       header.overlay.classList.toggle("hidden");
       header.popup.classList.toggle("hidden");
     }
   }
 });
 
-//Entrer le nom du joueur ( en cliquant sur la souris :  : testée : ça fonctionne - chay)
+//Entrer le nom du joueur ( en cliquant sur la souris )
 header.popupSubmit.addEventListener("click", (e) => {
   const errors = [];
   if (header.popupInput.value === "" || header.popupInput.value == null) {
@@ -204,8 +225,10 @@ header.popupSubmit.addEventListener("click", (e) => {
     alert(errors.join(","));
     return;
   } else {
-    playerName = header.popupInput.value;
-    header.userName.innerHTML = `${playerName}`;
+    /* playerName = header.popupInput.value;
+    header.userName.innerHTML = `${playerName}`; */
+    localStorage.setItem("playerName", header.popupInput.value);
+    header.userName.textContent = localStorage.getItem("playerName");
     header.overlay.classList.toggle("hidden");
     header.popup.classList.toggle("hidden");
   }
