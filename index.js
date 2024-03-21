@@ -26,7 +26,7 @@ const bonus3 = {
 };
 let areBonusActive = false;
 //? les paliers (à définir)
-steps = [100, 250, 500, 1000];
+steps = [100, 500, 1500, 3000];
 let reachedStep1 = false;
 let reachedStep2 = false;
 let reachedStep3 = false;
@@ -169,7 +169,7 @@ body.cloud.addEventListener("click", () => {
 //? fonctions pour les bonus
 function activeBonus() {
   if (areBonusActive != true) {
-    setInterval(bonusAugmentScore, 1500);
+    setInterval(bonusAugmentScore, 1000);
     areBonusActive = true;
   }
 }
