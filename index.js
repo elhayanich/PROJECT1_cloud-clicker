@@ -2,7 +2,7 @@
 //? score
 let score = 0;
 let scoreMultiplier = 1;
-let storedScore = localStorage.getItem("score");
+let storedScore = parseInt(localStorage.getItem("score"));
 //? nom du joueur
 let playerName = localStorage.getItem("playerName");
 //? les bonus (à re-définir?)
@@ -65,7 +65,10 @@ function checkName() {
 //? fonction qui remplace la valeur par défaut du score si une autre valeur existe dans localStorage
 function checkScore() {
   if (storedScore !== "" && storedScore != null) {
-    body.scoreDisplay.innerHTML = storedScore;
+    if (score <= 0) {
+      body.scoreDisplay.innerHTML = storedScore;
+      score = storedScore;
+    }
     checkStep();
   }
 }
@@ -130,6 +133,12 @@ function checkStep() {
 // fonction qui change l'affichage du score
 function updateScore() {
   body.scoreDisplay.innerHTML = score;
+  if (localStorage.getItem("score") == null) {
+    localStorage.setItem("score", score);
+  } else if (localStorage.getItem("score") !== null) {
+    localStorage.removeItem("score");
+    localStorage.setItem("score", score);
+  }
   checkStep();
 }
 
@@ -137,7 +146,6 @@ function updateScore() {
 function augmentScore(a = 1) {
   score = score + a * scoreMultiplier;
   updateScore();
-  localStorage.setItem("score", score);
 }
 function bonusAugmentScore() {
   augmentScore(bonus1.amount + bonus2.amount + bonus3.amount);
