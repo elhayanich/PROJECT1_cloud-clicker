@@ -48,7 +48,16 @@ const header = {
 
 //* Fonctions, événements & affectations
 //? fonction qui va s'occuper de changer l'arrière-plan
-// Fonction qui chnage la couleur du palier dés qu'il est atteint
+
+// Fonction pour gérer le clignotement des boutons bonus
+function blinkBonus(element) {
+  element.classList.add("blinking"); 
+  setTimeout(function() {
+    element.classList.remove("blinking");
+  }, 3000);
+}
+
+// Fonction qui ajoute un petit check à coté du palier dés qu'il est atteint + glow bonus + clignotement bonus
 function checkStep() {
   if (!reachedStep1) {
     if (
@@ -62,7 +71,9 @@ function checkStep() {
         "url(./assets/background-2.png)";
       scoreMultiplier = 2;
       bonus1.isUnlocked = true;
-      // document.querySelectorAll(".grid-item")[0].classList.add("reached");
+      bonus1.element.classList.add("bonus-glow");
+      document.querySelectorAll(".grid-item")[0].classList.add("reached");
+      blinkBonus(bonus1.element); 
     }
   }
   if (!reachedStep2) {
@@ -76,7 +87,9 @@ function checkStep() {
         "url(./assets/background-3.png)";
       scoreMultiplier = 4;
       bonus2.isUnlocked = true;
-      // document.querySelectorAll(".grid-item")[1].classList.add("reached");
+      bonus2.element.classList.add("bonus-glow");
+      document.querySelectorAll(".grid-item")[1].classList.add("reached");
+      blinkBonus(bonus2.element); 
     }
   }
   if (!reachedStep3) {
@@ -86,14 +99,16 @@ function checkStep() {
         "url(./assets/background-4.png)";
       scoreMultiplier = 8;
       bonus3.isUnlocked = true;
-      // document.querySelectorAll(".grid-item")[2].classList.add("reached");
+      bonus3.element.classList.add("bonus-glow");
+      document.querySelectorAll(".grid-item")[2].classList.add("reached");
+      blinkBonus(bonus3.element);
     }
   }
   if (!reachedStep4) {
     if (score >= steps[3]) {
-      // Gérer le dernier palier
+      // Gérer le dernier palier de 1000 raindrops ( À revoir : le joueur doit continuer à jouer)
       reachedStep4;
-      // document.querySelectorAll(".grid-item")[3].classList.add("reached");
+      document.querySelectorAll(".grid-item")[3].classList.add("reached");
     }
   }
   if (score >= steps[3]) {
@@ -107,6 +122,7 @@ function checkStep() {
     body.backgroundImage.classList.remove("blur-background");
   }
 }
+
 
 // fonction qui change l'affichage du score
 function updateScore() {
@@ -135,7 +151,7 @@ function activeBonus() {
 }
 // bonus#1
 bonus1.element.addEventListener("click", () => {
-  if (score >= bonus1.cost) {
+  if (score >= bonus1.cost ) {
     score -= bonus1.cost;
     updateScore();
     bonus1.amount++;
@@ -162,7 +178,7 @@ bonus3.element.addEventListener("click", () => {
 });
 
 //? Gestion du popup
-// Pour afficher notre popup :
+// Pour afficher notre popup name  :
 header.userName.addEventListener("click", () => {
   header.overlay.classList.toggle("hidden");
   header.popup.classList.toggle("hidden");
@@ -172,7 +188,7 @@ header.overlay.addEventListener("click", () => {
   header.overlay.classList.toggle("hidden");
   header.popup.classList.toggle("hidden");
 });
-//Entrer le nom du joueur en cliquant sur entrer : testée : ça fonctionne - chay)
+//Entrer le nom du joueur en cliquant sur entrer :
 let playerName = "";
 header.popupInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
@@ -193,7 +209,7 @@ header.popupInput.addEventListener("keypress", (e) => {
   }
 });
 
-//Entrer le nom du joueur ( en cliquant sur la souris :  : testée : ça fonctionne - chay)
+//Entrer le nom du joueur ( en cliquant sur la souris : 
 header.popupSubmit.addEventListener("click", (e) => {
   const errors = [];
   if (header.popupInput.value === "" || header.popupInput.value == null) {

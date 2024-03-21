@@ -1,96 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <title>Cloud Clicker</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-  <title>Cloud Clicker</title>
-</head>
-
-<body>
-  <script src="index.js" async></script>
-  <div class="container">
-    <header>
-      <div class="logo">
-        <img src="assets/logo-draft.png" alt="logo nuage de Cloud clicker">
+  <body>
+    <script src="index.js" async></script>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <img src="assets/logo-draft.png" alt="logo nuage de Cloud clicker" />
+        </div>
+        <button class="name">Your name</button>
+        <!-- Ajouter dans le menu 3 liens : About, home, instructions -->
+        <nav class="menu">
+          <button class="burger-menu">
+            <nav>
+              <span></span>
+              <span></span>
+              <span></span>
+            </nav>
+          </button>
+          <ul class="menu-list">
+            <li><a href="#" id="instructions-btn">Instructions</a></li>
+          </ul>
+        </nav>
+        <div class="instructions hidden">
+          <p>
+            You got summoned by the god of the sky, they told you to click the
+            cloud to make it rain and escape from the shadows into the heavens
+            of earth. You must obey or fall to your death onto the dark universe
+            for enterinity.
+          </p>
+          <button class="accept-mission">Accept mission</button>
+        </div>
+      </header>
+      <div class="grid">
+        <div class="grid-item">
+          Level 1 : 100 <img src="assets/goutte.webp" alt="raindrop" />
+        </div>
+        <div class="grid-item">
+          Level 2 : 250 <img src="assets/goutte.webp" alt="raindrop" />
+        </div>
+        <div class="grid-item">
+          Level 3 : 500 <img src="assets/goutte.webp" alt="raindrop" />
+        </div>
+        <div class="grid-item">
+          Level 4 : 1000 <img src="assets/goutte.webp" alt="raindrop" />
+        </div>
       </div>
-      <button class="name">Your name</button>
-      <!-- Ajouter dans le menu 3 liens : About, home, instructions -->
-      <nav class="menu">
-        <button class="burger-menu">
-          <nav>
-            <span></span>
-            <span></span>
-            <span></span>
-          </nav>
-        </button>
-        <ul class="menu-list">
-          <li><a href="#" id="instructions-btn">Instructions</a></li>
+      <main>
+        <ul>
+          <li>
+            <button class="main-button" id="bonus-1">
+              <img src="assets/bonus1-draft.png" alt="first bonus" />
+            </button>
+          </li>
+          <li>
+            <button class="main-button" id="bonus-2">
+              <img src="assets/bonus2-draft.png" alt="second bonus" />
+            </button>
+          </li>
+          <li>
+            <button class="main-button" id="bonus-3">
+              <img src="assets/bonus3-draft.png" alt="third bonus" />
+            </button>
+          </li>
         </ul>
-      </nav>
-      <div class="instructions hidden">
-        <p>
-          You got summoned by the god of the sky, they told you to click the
-          cloud to make it rain and escape from the shadows into the heavens
-          of earth. You must obey or fall to your death onto the dark universe
-          for enterinity.
-        </p>
-        <button class="accept-mission">Accept mission</button>
+        <button id="cloud">
+          <img
+            id="clicker"
+            class="clicker"
+            src="assets/clicker.png"
+            alt="clicker button"
+          />
+        </button>
+        <div class="score">
+          Score: <span id="score-display">0</span>
+          <img src="assets/goutte.webp" alt="raindrop" />
+        </div>
+      </main>
+      <div class="popup hidden">
+        <label class="popup-title">Enter your name : </label>
+        <input
+          class="popup-input"
+          type="text"
+          placeholder="Your name"
+          required
+        />
+        <button class="popup-submit" type="submit">Continue</button>
       </div>
-    </header>
-    <div class="grid">
-      <div class="grid-item">
-        Level 1 : 100 <img src="assets/goutte.webp" alt="raindrop">
-      </div>
-      <div class="grid-item">
-        Level 2 : 250 <img src="assets/goutte.webp" alt="raindrop">
-      </div>
-      <div class="grid-item">
-        Level 3 : 500 <img src="assets/goutte.webp" alt="raindrop">
-      </div>
-      <div class="grid-item">
-        Level 4 : 1000 <img src="assets/goutte.webp" alt="raindrop">
-      </div>
+      <div class="overlay hidden"></div>
     </div>
-    <main>
-      <ul>
-        <li>
-          <button class="main-button" id="bonus-1">
-            <img src="assets/bonus1-draft.png" alt="first bonus">
-          </button>
-        </li>
-        <li>
-          <button class="main-button" id="bonus-2">
-            <img src="assets/bonus2-draft.png" alt="second bonus">
-          </button>
-        </li>
-        <li>
-          <button class="main-button" id="bonus-3">
-            <img src="assets/bonus3-draft.png" alt="third bonus">
-          </button>
-        </li>
-      </ul>
-      <button id="cloud">
-        <img id="clicker" class="clicker" src="assets/clicker.png" alt="clicker button">
-      </button>
-      <div class="score">Score: <span id="score-display">0</span> <img src="assets/goutte.webp" alt="raindrop"></div>
-    </main>
-    <div class="popup hidden">
-      <label class="popup-title">Enter your name : </label>
-      <input class="popup-input" type="text" placeholder="Your name" required>
-      <button class="popup-submit" type="submit">Continue</button>
-    </div>
-    <div class="overlay hidden"></div>
-  </div>
-  <footer>
-    <p>
-      Made with ❤️ by <a href="https://github.com/AnneDAMIEN">Anne</a>,
-      <a href="https://github.com/elhayanich">Chaymae</a>,
-      <a href="https://github.com/aurelienLavanchy">Aurélien</a>
-    </p>
-  </footer>
-</body>
-
+    <footer>
+      <p>
+        Made with ❤️ by <a href="https://github.com/AnneDAMIEN">Anne</a>,
+        <a href="https://github.com/elhayanich">Chaymae</a>,
+        <a href="https://github.com/aurelienLavanchy">Aurélien</a>
+      </p>
+    </footer>
+  </body>
 </html>
