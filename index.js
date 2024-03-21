@@ -5,26 +5,29 @@ let scoreMultiplier = 1;
 let storedScore = parseInt(localStorage.getItem("score"));
 //? nom du joueur
 let playerName = localStorage.getItem("playerName");
-//? les bonus (à re-définir?)
+//? les bonus
 const bonus1 = {
   element: document.querySelector("#bonus-1"),
   isUnlocked: false,
-  cost: 100,
+  cost: 90,
   amount: 0,
+  storedAmount: 0,
 };
 const bonus2 = {
   element: document.querySelector("#bonus-2"),
   isUnlocked: false,
   cost: 250,
   amount: 0,
+  storedAmount: 0,
 };
 const bonus3 = {
   element: document.querySelector("#bonus-3"),
   isUnlocked: false,
   cost: 500,
   amount: 0,
+  storedAmount: 0,
 };
-let areBonusActive = false;
+let anyActiveBonus = false;
 //? les paliers (à définir)
 steps = [100, 500, 1500, 3000];
 let reachedStep1 = false;
@@ -54,6 +57,7 @@ const header = {
 function checkState() {
   checkName();
   checkScore();
+  checkBonuses();
 }
 checkState();
 //? fonction pour remplacer "Your Name" par la valeur stockée dans localStorage (si elle existe)
@@ -64,12 +68,37 @@ function checkName() {
 }
 //? fonction qui remplace la valeur par défaut du score si une autre valeur existe dans localStorage
 function checkScore() {
-  if (storedScore !== "" && storedScore != null) {
-    if (score <= 0) {
-      body.scoreDisplay.innerHTML = storedScore;
-      score = storedScore;
-    }
+  if (!isNaN(storedScore) && storedScore != null) {
+    body.scoreDisplay.innerHTML = storedScore;
+    score = storedScore;
     checkStep();
+  }
+}
+//?
+function checkBonuses() {
+  if (
+    !isNaN(localStorage.getItem("bonus-1")) &&
+    localStorage.getItem("bonus-1") != null
+  ) {
+    bonus1.storedAmount = parseInt(localStorage.getItem("bonus-1"));
+    bonus1.amount = bonus1.storedAmount;
+    activeBonus();
+  }
+  if (
+    !isNaN(localStorage.getItem("bonus-2")) &&
+    localStorage.getItem("bonus-2") != null
+  ) {
+    bonus2.storedAmount = parseInt(localStorage.getItem("bonus-2"));
+    bonus2.amount = bonus2.storedAmount;
+    activeBonus();
+  }
+  if (
+    !isNaN(localStorage.getItem("bonus-3")) &&
+    localStorage.getItem("bonus-3") != null
+  ) {
+    bonus3.storedAmount = parseInt(localStorage.getItem("bonus-3"));
+    bonus3.amount = bonus3.storedAmount;
+    activeBonus();
   }
 }
 //? fonction qui va s'occuper de changer l'arrière-plan
@@ -125,7 +154,7 @@ function checkStep() {
   }
   if (!reachedStep4) {
     if (score >= steps[3]) {
-      // Gérer le dernier palier de 1000 raindrops ( À revoir : le joueur doit continuer à jouer)
+      // Gérer le dernier palier ( À revoir : le joueur doit pouvoir continuer à jouer (?))
       reachedStep4;
       document.querySelectorAll(".grid-item")[3].classList.add("reached");
     }
@@ -138,29 +167,26 @@ function checkStep() {
       document.body.appendChild(messageElement);
     } /*  else {
       body.backgroundImage.classList.remove("blur-background");
-    } */ /* n'est pas utilisé */
+    } */ /* ^ n'est pas utilisé */
   }
 }
 
 // fonction qui change l'affichage du score
 function updateScore() {
   body.scoreDisplay.innerHTML = score;
-  if (localStorage.getItem("score") == null) {
-    localStorage.setItem("score", score);
-  } else if (localStorage.getItem("score") !== null) {
-    localStorage.removeItem("score");
-    localStorage.setItem("score", score);
-  }
+  localStorage.setItem("score", score);
   checkStep();
 }
 
 // fonction qui gère l'augmentation du score
-function augmentScore(a = 1) {
+function augmentScore(a) {
   score = score + a * scoreMultiplier;
   updateScore();
 }
 function bonusAugmentScore() {
-  augmentScore(bonus1.amount + bonus2.amount + bonus3.amount);
+  /* augmentScore(bonus1.amount + bonus2.amount + bonus3.amount); */
+  score += bonus1.amount + bonus2.amount * 3 + bonus3.amount * 5;
+  updateScore();
 }
 // événement qui augmente le score à chaque fois qu'on clicke sur le nuage
 body.cloud.addEventListener("click", () => {
@@ -168,9 +194,9 @@ body.cloud.addEventListener("click", () => {
 });
 //? fonctions pour les bonus
 function activeBonus() {
-  if (areBonusActive != true) {
+  if (anyActiveBonus != true) {
     setInterval(bonusAugmentScore, 1000);
-    areBonusActive = true;
+    anyActiveBonus = true;
   }
 }
 // bonus#1
@@ -179,6 +205,7 @@ bonus1.element.addEventListener("click", () => {
     score -= bonus1.cost;
     updateScore();
     bonus1.amount++;
+    localStorage.setItem("bonus-1", bonus1.amount);
     activeBonus();
   }
 });
@@ -188,6 +215,7 @@ bonus2.element.addEventListener("click", () => {
     score -= bonus2.cost;
     updateScore();
     bonus2.amount++;
+    localStorage.setItem("bonus-2", bonus2.amount);
     activeBonus();
   }
 });
@@ -197,6 +225,7 @@ bonus3.element.addEventListener("click", () => {
     score -= bonus3.cost;
     updateScore();
     bonus3.amount++;
+    localStorage.setItem("bonus-3", bonus3.amount);
     activeBonus();
   }
 });

@@ -282,10 +282,16 @@ ul {
 }
 
 .clicker {
-  margin-top: 8rem;
+  margin-top: 2.5rem;
   background-color: transparent;
   border: none;
-  width: 18rem;
+  width: 10rem;
+}
+@media screen and (width >= 1200px) {
+  .clicker {
+    margin-top: 6rem;
+    width: 16rem;
+  }
 }
 
 #cloud {
