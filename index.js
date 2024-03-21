@@ -2,7 +2,7 @@
 //? score
 let score = 0;
 let scoreMultiplier = 1;
-let storedScore = localStorage.getItem("score");
+let storedScore = parseInt(localStorage.getItem("score"));
 //? nom du joueur
 let playerName = localStorage.getItem("playerName");
 //? les bonus (à re-définir?)
@@ -65,7 +65,10 @@ function checkName() {
 //? fonction qui remplace la valeur par défaut du score si une autre valeur existe dans localStorage
 function checkScore() {
   if (storedScore !== "" && storedScore != null) {
-    body.scoreDisplay.innerHTML = storedScore;
+    if (score <= 0) {
+      body.scoreDisplay.innerHTML = storedScore;
+      score = storedScore;
+    }
     checkStep();
   }
 }
@@ -73,8 +76,8 @@ function checkScore() {
 
 // Fonction pour gérer le clignotement des boutons bonus
 function blinkBonus(element) {
-  element.classList.add("blinking"); 
-  setTimeout(function() {
+  element.classList.add("blinking");
+  setTimeout(function () {
     element.classList.remove("blinking");
   }, 3000);
 }
@@ -90,7 +93,7 @@ function checkStep() {
       bonus1.isUnlocked = true;
       bonus1.element.classList.add("bonus-glow");
       document.querySelectorAll(".grid-item")[0].classList.add("reached");
-      blinkBonus(bonus1.element); 
+      blinkBonus(bonus1.element);
     }
   }
   if (!reachedStep2) {
@@ -103,7 +106,7 @@ function checkStep() {
       bonus2.isUnlocked = true;
       bonus2.element.classList.add("bonus-glow");
       document.querySelectorAll(".grid-item")[1].classList.add("reached");
-      blinkBonus(bonus2.element); 
+      blinkBonus(bonus2.element);
     }
   }
   if (!reachedStep3) {
@@ -126,23 +129,28 @@ function checkStep() {
       reachedStep4;
       document.querySelectorAll(".grid-item")[3].classList.add("reached");
     }
-  }
-  if (score >= steps[3]) {
-    body.backgroundImage.classList.add("blur-background");
-    const messageElement = document.createElement("div");
-    messageElement.textContent =
-      "You fulfilled your mission. Enjoy eternity in paradise!";
-    messageElement.classList.add("message");
-    document.body.appendChild(messageElement);
-  } else {
-    body.backgroundImage.classList.remove("blur-background");
+    if (score >= steps[3]) {
+      body.backgroundImage.classList.add("blur-background");
+      const messageElement = document.createElement("div");
+      messageElement.textContent =
+        "You fulfilled your mission. Enjoy eternity in paradise!";
+      messageElement.classList.add("message");
+      document.body.appendChild(messageElement);
+    } /*  else {
+      body.backgroundImage.classList.remove("blur-background");
+    } */ /* n'est pas utilisé */
   }
 }
-
 
 // fonction qui change l'affichage du score
 function updateScore() {
   body.scoreDisplay.innerHTML = score;
+  if (localStorage.getItem("score") == null) {
+    localStorage.setItem("score", score);
+  } else if (localStorage.getItem("score") !== null) {
+    localStorage.removeItem("score");
+    localStorage.setItem("score", score);
+  }
   checkStep();
 }
 
@@ -150,7 +158,6 @@ function updateScore() {
 function augmentScore(a = 1) {
   score = score + a * scoreMultiplier;
   updateScore();
-  localStorage.setItem("score", score);
 }
 function bonusAugmentScore() {
   augmentScore(bonus1.amount + bonus2.amount + bonus3.amount);
@@ -168,7 +175,7 @@ function activeBonus() {
 }
 // bonus#1
 bonus1.element.addEventListener("click", () => {
-  if (score >= bonus1.cost ) {
+  if (score >= bonus1.cost) {
     score -= bonus1.cost;
     updateScore();
     bonus1.amount++;
