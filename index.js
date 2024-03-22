@@ -117,7 +117,7 @@ function checkStep() {
     if (score >= steps[0] && score < steps[1]) {
       reachedStep1 = true;
       body.backgroundImage.style.backgroundImage =
-        "url(./assets/background-2.png)";
+        "url(./assets/Background-2.png)";
       scoreMultiplier = 2;
       bonus1.isUnlocked = true;
       bonus1.element.classList.add("bonus-glow");
