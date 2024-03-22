@@ -98,47 +98,24 @@ header {
   }
 }
 
+.burger-image {
+  width: 30px;
+  height: 30px;
+}
+
 .burger-menu {
   display: block;
-  background: none;
+  background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
-.burger-menu span {
-  display: block;
-  width: 2.5rem;
-  height: 0.2rem;
-  background: var(--black);
-  margin: 5px 0;
+.menu button {
+  background-color: transparent;
+  border-color: transparent;
 }
 
-/* Navigation du menu burger ok  */
-.menu-list {
-  display: none;
-}
-
-.menu-list.active {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  right: 0;
-  background-color: white;
-  padding: 1rem;
-  border: 1px solid var(--black);
-}
-
-.menu-list li {
-  margin-bottom: 0.5rem;
-}
-
-.menu-list a {
-  text-decoration: none;
-  color: var(--black);
-}
-
-/* Instructions en cours : pas ok  */
+/* Instructions */
 .instructions {
   position: fixed;
   top: 50%;
@@ -159,6 +136,7 @@ header {
 .instructions.hidden {
   display: none;
 }
+
 .instructions.visible {
   display: block;
 }
@@ -175,6 +153,7 @@ header {
   position: absolute;
   right: 1rem;
 }
+
 
 .grid {
   display: grid;

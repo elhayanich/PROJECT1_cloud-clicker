@@ -292,28 +292,30 @@ body.cloud.addEventListener("click", () => {
   }, 500);
 });
 
-// Affichage instructions
-const instructionsBtn = document.getElementById("instructions-btn");
+
+// Sélection des éléments d'instructions et du bouton "Accept mission"
 const instructionsElement = document.querySelector(".instructions");
-instructionsBtn.addEventListener("click", function () {
-  instructionsElement.classList.toggle("hidden");
-  instructionsElement.classList.toggle("visible");
-  body.backgroundImage.classList.toggle("blur-background");
+const acceptMissionButton = document.querySelector(".accept-mission");
+const menuList = document.querySelector(".menu");
+
+// icone info 
+const burgerImage = document.querySelector(".burger-image");
+
+
+burgerImage.addEventListener("click", function () {
+  instructionsElement.classList.remove("hidden");
+  instructionsElement.classList.add("visible");
 });
 
-// fermer les instructions + le menu burger
-const acceptMissionButton = document.querySelector(".accept-mission");
-
+// Fermer les instructions en cliquant sur "Accept mission"
 acceptMissionButton.addEventListener("click", function () {
   instructionsElement.classList.add("hidden");
   instructionsElement.classList.remove("visible");
   menuList.classList.remove("active");
-  body.backgroundImage.classList.remove("blur-background");
 });
 
-// Menu Burger
-const burgerMenu = document.querySelector(".burger-menu");
-const menuList = document.querySelector(".menu-list");
+// Sélection du menu burger et ajout d'un écouteur d'événements pour ouvrir et fermer le menu
+const burgerMenu = document.querySelector(".menu");
 burgerMenu.addEventListener("click", function () {
   menuList.classList.toggle("active");
 });
