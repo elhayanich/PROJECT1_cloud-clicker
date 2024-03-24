@@ -1,0 +1,14 @@
+{
+  "name": "project-1_cloud-clicker",
+  "version": "1.0.0",
+  "description": "![logo](assets/favicon.ico)",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npx eslint index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.57.0"
+  }
+}
